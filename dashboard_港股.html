@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>港股完整看板 - IFA投研数据看板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e17;color:#e0e0e0}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 0 16px;border-bottom:1px solid #1a1f2e;margin-bottom:20px}
+.nav-bar h1{font-size:1.2rem;color:#fff}
+.nav-bar h1 span{color:#2980b9}
+.nav-bar h1 small{font-size:.7rem;color:#555;font-weight:400}
+.back-link{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:transparent;color:#7f8c8d;border:1px solid #2a2f3e;border-radius:5px;text-decoration:none;font-size:.8rem;transition:all .2s}
+.back-link:hover{background:#1a1f2e;color:#fff}
+.section{margin-bottom:22px}
+.section h2{font-size:1rem;color:#2980b9;margin-bottom:12px;padding-left:10px;border-left:3px solid #2980b9}
+.section h2 .badge{display:inline-block;padding:0 6px;border-radius:3px;font-size:.6rem;font-weight:600;line-height:1.6;margin-left:6px;vertical-align:middle;color:#fff;background:#2a2f3e}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:18px}
+.card{background:#111827;border-radius:8px;padding:12px 14px;position:relative}
+.card .label{font-size:.72rem;color:#7f8c8d;margin-bottom:4px}
+.card .value{font-size:1.15rem;font-weight:600;color:#fff}
+.card .value.red{color:#e74c3c}
+.card .value.green{color:#27ae60}
+.card .value.blue{color:#3498db}
+.card .value.orange{color:#e67e22}
+.card .sub{font-size:.7rem;color:#7f8c8d;margin-top:4px}
+.card .change{font-size:.75rem;margin-top:2px}
+.card .sd{font-size:.65rem;color:#4a4f5e;margin-top:4px;border-top:1px solid #1a1f2e;padding-top:4px}
+.card .row2{font-size:.65rem;color:#555;margin-top:3px}
+.src-info{font-size:.6rem;color:#3a3f4e;margin-top:3px;padding-top:3px;border-top:1px solid #151b28;line-height:1.5}
+.src-info .si-s{color:#555}
+.src-info .si-f{color:#3a3f4e}
+.south-detailed{display:flex;flex-direction:column;gap:3px}
+.south-detailed .sd-row{display:flex;justify-content:space-between;font-size:.7rem;color:#7f8c8d}
+.south-detailed .sd-row .sd-val{color:#ecf0f1;font-weight:500}
+.chart-label{font-size:.72rem;color:#7f8c8d;padding:6px 2px;font-weight:400;letter-spacing:0.3px}
+.chart-placeholder{background:#111827;border-radius:8px;padding:40px 20px;text-align:center;color:#444;font-size:.85rem;margin-bottom:18px}
+.chart-label{font-size:1.05rem;font-weight:700;color:#e8e8e8;margin:14px 0 8px 0;padding-left:12px;border-left:3px solid #2980b9;letter-spacing:0.3px}
+.chart-label .sub{font-size:.7rem;color:#7f8c8d;font-weight:400;margin-left:6px}
+.chart-label .icon{margin-right:6px}
+.update-info{text-align:center;padding:16px 0;font-size:.72rem;color:#555;border-top:1px solid #1a1f2e;margin-top:10px}
+
+/* Hibor曲线表格 */
+.hibor-table{background:#111827;border-radius:8px;padding:10px 14px;margin-bottom:18px}
+.hibor-table .ht-title{font-size:.7rem;color:#7f8c8d;margin-bottom:6px}
+.hibor-table table{width:100%;border-collapse:collapse}
+.hibor-table td{padding:4px 2px;text-align:center;font-size:.75rem;color:#e0e0e0;border-right:1px solid #1a1f2e}
+.hibor-table td:last-child{border-right:none}
+.hibor-table .ht-label{color:#555;font-size:.65rem;padding-bottom:2px}
+.hibor-table .ht-val{font-weight:600;color:#e0e0e0}
+
+/* 约8张卡片每行3列 */
+@media(min-width:700px){
+  .card-grid.hk-indexes{grid-template-columns:repeat(4,1fr)}
+  .card-grid.hk-flow{grid-template-columns:repeat(3,1fr)}
+  .card-grid.hk-rate{grid-template-columns:repeat(3,1fr)}
+  .card-grid.hk-macro{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:699px){
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-bar{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+.info-tip{display:inline;cursor:pointer;margin-left:3px;color:#5a5a6e;font-size:.82em;position:relative;user-select:none}
+.info-tip:hover{color:#e67e22}
+#tip-box{position:fixed;z-index:9999;max-width:340px;padding:10px 13px;background:#1e2433;color:#ccc;border:1px solid #3a3f5e;border-radius:8px;font-size:.78rem;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:none;opacity:0;transition:opacity .15s}
+#tip-box.show{opacity:1;pointer-events:auto}
+#tip-box .tip-close{position:absolute;top:4px;right:8px;cursor:pointer;color:#666;font-size:1rem;line-height:1}
+#tip-box .tip-close:hover{color:#ccc}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="nav-bar">
+    <h1><span style="font-size:1.8em">港股</span> 完整数据看板 <small>v1.1</small></h1>
+    <a href="index.html" class="back-link">&#x21E6; 返回首页</a>
+  </div>
+
+  <!-- ===== 1. 港股指数 ===== -->
+  <div class="section">
+    <h2>港股指数 <span class="badge">主</span></h2>
+    <div class="card-grid hk-indexes">
+      <div class="card" data-id="HK-005">
+        <div class="label">恒生指数<span class="info-tip" data-desc="恒生指数（点）：香港最具代表性的基准指数。港股交易日09:30~16:00每10分钟新浪实时拉取。16:00收盘后显示当日价。收市竞价时段（16:00~16:08）可能有约0.1%以内的微小差异。数据源：新浪财经。" data-tip-for="HK-005">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2" data-52w="HK-005">-</div>
+      </div>
+      <div class="card" data-id="HK-DI1">
+        <div class="label">恒生科技指数<span class="info-tip" data-desc="恒生科技指数（点）：追踪在港上市科技公司（腾讯、阿里、美团等）。取值时间及更新方式同恒生指数。数据源：新浪财经。" data-tip-for="HK-DI1">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2" data-52w="HK-DI1">-</div>
+      </div>
+      <div class="card" data-id="HK-DI2">
+        <div class="label">国企指数<span class="info-tip" data-desc="恒生中国企业指数（点）：追踪在港上市H股及中资企业。取值时间同恒生指数。数据源：新浪财经。" data-tip-for="HK-DI2">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2" data-52w="HK-DI2">-</div>
+      </div>
+      <div class="card" data-id="HK-DI3">
+        <div class="label">恒生指数股息率<span class="info-tip" data-desc="恒生指数股息率（%）：80多只成分股加权平均股息率，非单一股票股息率。每日T+1更新（显示上一交易日值），盘中不会变动。数据源：akshare。" data-tip-for="HK-DI3">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="row2">-</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2. 资金流向 ===== -->
+  <div class="section">
+    <h2>资金流向 <span class="badge">南向+成交</span></h2>
+    <div class="card-grid hk-flow">
+      <div class="card" data-id="HK-001">
+        <div class="label">南向资金<span class="info-tip" data-desc="南向资金（亿港元）：沪深港股通南向当日净买入额，反映内地资金流入港股意愿。港股交易日09:30~16:00实时预估，约18:00结算完成。正值=净买入（内地资金流入港股），负值=净卖出。数据源：东方财富。" data-tip-for="HK-001">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="sd south-detailed">
+          <span>暂无拆分数据</span>
+        </div>
+      </div>
+      <div class="card" data-id="HK-E01">
+        <div class="label">港股成交额<span class="info-tip" data-desc="港股日成交额（亿港元）：港股交易日09:30~16:00盘中实时累积。数据源：新浪财经。" data-tip-for="HK-E01">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2" id="hk-amount-avg">-</div>
+      </div>
+      <div class="card" data-id="HK-E02">
+        <div class="label">港股成交量<span class="info-tip" data-desc="港股日成交量：港股交易日09:30~16:00盘中实时累积。数据源：新浪财经。" data-tip-for="HK-E02">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 3. 利率与汇率 ===== -->
+  <div class="section">
+    <h2>利率与汇率 <span class="badge">Hibor+港元</span></h2>
+    <div class="card-grid hk-rate">
+      <div class="card" data-id="HK-E03">
+        <div class="label">恒指波幅指数 VHSI<span class="info-tip" data-desc="恒指波幅指数VHSI：港版VIX。大于25意味港股波动偏高。交易日09:30~16:00实时反映预期波动率，非实际跌幅。数据源：新浪财经。" data-tip-for="HK-E03">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+      <div class="card" data-id="HK-002">
+        <div class="label">Hibor隔夜<span class="info-tip" data-desc="HIBOR隔夜（%）：香港银行间隔夜拆借利率。财资公会每个工作日约11:15发布当日定价，本看板16:00后拉取。16:00前为前一工作日值。月中/季末可能从1%跳升至3-4%，一周左右回落属正常。数据源：东方财富。" data-tip-for="HK-002">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+      <div class="card" data-id="HK-003">
+        <div class="label">港元汇率(兑CNY)<span class="info-tip" data-desc="港元汇率：港元兑人民币即期汇率。港股交易日09:30~16:00新浪实时更新。香港联系汇率制度下在7.75~7.85窄幅波动，看到不变是正常现象。数据源：新浪财经。" data-tip-for="HK-003">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+    </div>
+    <!-- Hibor期限结构表格 -->
+    <div class="hibor-table" id="hibor-table" data-id="HK-E06">
+      <div class="ht-title">Hibor利率期限结构 <span style="font-weight:400;color:#555;font-size:.65rem">(金十数据)</span></div>
+      <table>
+        <tr>
+          <td class="ht-label">ON</td>
+          <td class="ht-label">1W</td>
+          <td class="ht-label">1M</td>
+          <td class="ht-label">3M</td>
+          <td class="ht-label">6M</td>
+          <td class="ht-label">1Y</td>
+        </tr>
+        <tr id="hibor-row">
+          <td class="ht-val">--</td>
+          <td class="ht-val">--</td>
+          <td class="ht-val">--</td>
+          <td class="ht-val">--</td>
+          <td class="ht-val">--</td>
+          <td class="ht-val">--</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 4. 宏观经济 ===== -->
+  <div class="section">
+    <h2>宏观经济 <span class="badge">就业·GDP·地产</span></h2>
+    <div class="card-grid hk-macro">
+      <div class="card" data-id="HK-DI4">
+        <div class="label">香港失业率<span class="info-tip" data-desc="香港失业率（%）：季度低频指标，每季度（1月/4月/7月/10月）中旬发布上季度数据。非看板滞后，是官方发布周期决定。数据源：香港统计处。" data-tip-for="HK-DI4">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+      <div class="card" data-id="HK-DI5">
+        <div class="label">香港GDP<span class="info-tip" data-desc="香港GDP（亿港元）：季度低频指标，每季度中旬发布上季度数据。非看板滞后。数据源：香港统计处。" data-tip-for="HK-DI5">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2">百万港元</div>
+      </div>
+      <div class="card" data-id="HK-DI6">
+        <div class="label">香港GDP同比<span class="info-tip" data-desc="香港GDP同比增速（%）：季度低频指标。取值时间同HK-DI5。数据源：香港统计处。" data-tip-for="HK-DI6">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+      </div>
+      <div class="card" data-id="HK-DI7">
+        <div class="label">楼宇买卖合约金额<span class="info-tip" data-desc="楼宇买卖合约金额（亿港元）：月度低频指标，每月初发布上两个完整月数据。非看板滞后。数据源：香港土地注册处。" data-tip-for="HK-DI7">&#x24d8;</span></div>
+        <div class="value">--</div>
+        <div class="change">--</div>
+        <div class="row2">百万港元</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5. 走势图 ===== -->
+  <div class="section">
+    <h2>走势图 <span class="badge">近60日</span></h2>
+    <div class="chart-label"><span class="icon">📈</span>恒生指数 &amp; 恒生科技指数 日线走势</div>
+    <div id="hsi-chart" style="background:#111827;border-radius:8px;width:100%;height:340px;margin-bottom:6px"></div>
+    <div class="src-info" style="padding:0 4px 12px 4px;margin-top:0">
+      <div class="si-s">来源: 新浪财经港股日线 (akshare) | 更新: 每日港股收盘后</div>
+      <div class="si-f">数据提供: 香港交易所</div>
+    </div>
+    <div style="margin-top:16px"></div>
+    <div class="chart-label"><span class="icon">💵</span>南向资金 日净买额 &amp; 历史累计</div>
+    <div id="south-chart-container" style="background:#111827;border-radius:8px;width:100%;min-height:320px;height:100%;margin-bottom:6px">
+      <div id="south-chart" style="width:100%;height:100%;min-height:320px"></div>
+    </div>
+    <div class="src-info" style="padding:0 4px 12px 4px;margin-top:0">
+      <div class="si-s">来源: 东方财富 (akshare) | 更新: 每交易日收盘后</div>
+      <div class="si-f">净买额正=净流入, 负=净流出 (单位: 亿人民币)</div>
+    </div>
+  </div>
+
+  <div class="update-info">
+    数据仅供参考，不构成投资建议 | 港股完整看板 v1.1 (19项指标)<br>
+    <span id="lastUpdate">数据加载中...</span>
+  </div>
+</div>
+
+<script>
+const DATA_URL='dashboard_data.json?_t='+Date.now();
+let lastTs=0;
+
+// 新浪代码 → data-id 映射 (用于52周高/低)
+const SINA_52W_MAP = {
+  'HK-005': 'hkHSI',   // 恒指
+  'HK-DI1': 'hkHSTECH',// 恒科
+  'HK-DI2': 'hkHSCEI', // 国企
+};
+
+async function load(){
+  try{
+    const r=await fetch(DATA_URL);
+    if(!r.ok)return;
+    const d=await r.json();
+    if(d.timestamp===lastTs)return;
+    lastTs=d.timestamp;
+    const t=document.getElementById('lastUpdate');
+    if(d.update_time)t.textContent='更新时间: '+d.update_time;
+    const v=d.values||{};
+
+    var meta = d.meta || {};
+
+    document.querySelectorAll('.card').forEach(el=>{
+      const id=el.dataset.id;
+      if(!id||!v[id])return;
+      const o=v[id];
+      const valueEl=el.querySelector('.value');
+      const changeEl=el.querySelector('.change');
+      const subEl=el.querySelector('.sub');
+      const sdEl=el.querySelector('.sd');
+      const row2El=el.querySelector('.row2');
+
+      // ===== 南向资金（三栏结构） =====
+      if(id==='HK-001' && o.prev_close!==undefined){
+        renderSouthMoney(el, o);
+        return;
+      }
+
+      // ===== 普通指标 =====
+      if(o.value!==null && o.value!==undefined){
+        // Hibor曲线是对象，跳过（由hibor-table单独渲染）
+        if(typeof o.value === 'object' && id==='HK-E06') return;
+
+        if(valueEl){
+          valueEl.textContent = formatNum(o.value);
+          valueEl.className = 'value';
+        }
+        // 涨跌幅：changeUnit存在且不是%的，显示绝对变化值
+        if(changeEl){
+          if(o.change!==null && o.change!==undefined){
+            const c = parseFloat(o.change);
+            const unit = o.changeUnit || '%';
+            if(!isNaN(c)){
+              if(unit && unit !== '%'){
+                // 绝对变化值（如亿港元、点），显示带+/-的原始值
+                changeEl.textContent = (c>=0?'+':'') + c.toFixed(1) + unit;
+              } else {
+                changeEl.textContent = (c>=0?'+':'') + c.toFixed(2) + unit;
+              }
+              changeEl.style.color = c>0 ? '#e74c3c' : (c<0 ? '#27ae60' : 'inherit');
+              if(valueEl) valueEl.style.color = c>0 ? '#e74c3c' : (c<0 ? '#27ae60' : '#fff');
+            } else {
+              changeEl.textContent = '--';
+            }
+          }else{
+            changeEl.textContent = '--';
+          }
+        }
+      }
+
+      // 数据来源信息（每个卡片底部）
+      var srcEl = el.querySelector('.src-info');
+      if(!srcEl){
+        srcEl = document.createElement('div');
+        srcEl.className = 'src-info';
+        el.appendChild(srcEl);
+      }
+      var m = meta[id] || {};
+      var srcHtml = '';
+      if(m.source) srcHtml += '<div class="si-s">来源: ' + m.source + '</div>';
+      if(m.update_freq) srcHtml += '<div class="si-f">更新: ' + m.update_freq + '</div>';
+      if(o.data_time) srcHtml += '<div class="si-f">时间: ' + o.data_time + '</div>';
+      srcEl.innerHTML = srcHtml;
+
+      // data-time fallback for row2
+      if(o.data_time && row2El && id!=='HK-001'){
+        row2El.textContent = o.data_time;
+      }
+    });
+
+    // ===== 52周高/低（港股指数卡片row2） =====
+    load52Weeks(v);
+
+    // ===== Hibor曲线 =====
+    if(v['HK-E06'] && typeof v['HK-E06'].value === 'object'){
+      renderHibor(v['HK-E06'].value);
+    }
+
+    // ===== 走势图 =====
+    if(d.hk_chart && d.hk_chart.hsi && d.hk_chart.hsi.length > 5){
+      renderChart(d.hk_chart);
+    }
+  }catch(e){console.warn('load fail:',e)}
+}
+
+function renderSouthMoney(el, o){
+  const valueEl = el.querySelector('.value');
+  const sdEl = el.querySelector('.sd');
+  if(valueEl){
+    let display = '--';
+    const tc = (o.today_close || '').trim();
+    const rt = (o.realtime || '').trim();
+    if(tc && tc!=='今日尚未收盘' && !tc.startsWith('非')){
+      display = tc;
+    }else if(rt && rt!=='--' && !rt.startsWith('非')){
+      display = rt;
+    }else if(tc){
+      display = tc;
+    }
+    valueEl.textContent = display;
+    valueEl.className = 'value';
+    const n = parseFloat(display.replace(/[^0-9\-.]/g,''));
+    if(!isNaN(n)){
+      if(n>0) valueEl.classList.add('red');
+      else if(n<0) valueEl.classList.add('green');
+    }
+  }
+  if(sdEl){
+    let html = '';
+    if(o.prev_close)         html += '<div class="sd-row"><span>上日收盘</span><span class="sd-val">'+o.prev_close+'</span></div>';
+    if(o.today_close)        html += '<div class="sd-row"><span>今日收盘</span><span class="sd-val">'+o.today_close+'</span></div>';
+    if(o.realtime_detail)    html += '<div class="sd-row"><span>实时拆分</span><span class="sd-val">'+o.realtime_detail+'</span></div>';
+    if(o.data_time)          html += '<div class="sd-row"><span>数据时间</span><span class="sd-val">'+o.data_time+'</span></div>';
+    sdEl.innerHTML = html || '暂无拆分数据';
+  }
+}
+
+function load52Weeks(v){
+  const els = {
+    'hkHSI':   {el: document.querySelector('[data-52w="HK-005"]'),  price: v['HK-005']?.value},
+    'hkHSTECH':{el: document.querySelector('[data-52w="HK-DI1"]'), price: v['HK-DI1']?.value},
+    'hkHSCEI': {el: document.querySelector('[data-52w="HK-DI2"]'), price: v['HK-DI2']?.value},
+  };
+  // 先尝试从values中的HK-E04/E05获取恒生科技".(恒科数据已存入HK-E04/high和HK-E05/low)
+  if(els['hkHSTECH']?.el && v['HK-E04']){
+    const high = v['HK-E04'].value;
+    const pctHigh = v['HK-E04'].change;
+    const low = v['HK-E05'].value;
+    const pctLow = v['HK-E05'].change;
+    els['hkHSTECH'].el.innerHTML = '52周高 '+high+' (<span style="'+ (pctHigh<0?'color:#27ae60':'color:#e74c3c') +'">'+pctHigh+'%</span>) 低 '+low+' (<span style="'+ (pctLow>0?'color:#e74c3c':'color:#27ae60') +'">+'+pctLow+'%</span>)';
+  }
+  // 恒指和国企 - 需要有临时方案，但目前后端暂未写入
+  // 对于恒指，尝试从新浪JSONP获取
+  for(var code in els){
+    if(code==='hkHSTECH') continue; // 已处理
+    var info = els[code];
+    if(!info.el || !info.price) continue;
+    fetch52Jsonp(code, info);
+  }
+}
+
+function fetch52Jsonp(code, info){
+  // 使用JSONP跨域获取新浪实时行情
+  var callbackName = '__sinajs_cb_' + code + '_' + Date.now();
+  window[callbackName] = function(raw){
+    var parts = raw.split(',');
+    if(parts.length >= 17){
+      var high52 = parseFloat(parts[15]);
+      var low52 = parseFloat(parts[16]);
+      var cur = info.price;
+      var pctHigh = ((cur/high52-1)*100).toFixed(2);
+      var pctLow = ((cur/low52-1)*100).toFixed(2);
+      info.el.innerHTML = '52周高 '+high52+' (<span style="'+ (pctHigh<0?'color:#27ae60':'color:#e74c3c') +'">'+pctHigh+'%</span>) &nbsp;低 '+low52+' (<span style="'+ (pctLow>0?'color:#e74c3c':'color:#27ae60') +'">+'+pctLow+'%</span>)';
+    }
+    delete window[callbackName];
+  };
+  var script = document.createElement('script');
+  script.src = 'https://hq.sinajs.cn/list=' + code;
+  script.onload = function(){ script.remove(); };
+  script.onerror = function(){ info.el.textContent = '---'; delete window[callbackName]; script.remove(); };
+  document.body.appendChild(script);
+}
+
+function renderHibor(curve){
+  const row = document.getElementById('hibor-row');
+  if(!row) return;
+  const cells = row.querySelectorAll('.ht-val');
+  const keys = ['ON','1W','1M','3M','6M','1Y'];
+  for(let i=0; i<keys.length && i<cells.length; i++){
+    const v = curve[keys[i]];
+    cells[i].textContent = v!==undefined && v!==null ? v.toFixed(4) : '--';
+  }
+}
+
+function formatNum(n){
+  if(n===null || n===undefined) return '--';
+  if(typeof n === 'number'){
+    // 大数加千分位，小数保留两位
+    if(Math.abs(n) >= 10000) return n.toLocaleString('zh-CN', {maximumFractionDigits:2});
+    if(Number.isInteger(n)) return n.toLocaleString('zh-CN');
+    return n.toLocaleString('zh-CN', {minimumFractionDigits:2, maximumFractionDigits:4});
+  }
+  return n;
+}
+
+function renderChart(chartData){
+  var dom = document.getElementById('hsi-chart');
+  if(!dom) return;
+  var myChart = echarts.getInstanceByDom(dom) || echarts.init(dom);
+
+  var dates = chartData.hsi.map(function(d){ return d.date.slice(5); });
+  var hsiVals = chartData.hsi.map(function(d){ return d.close; });
+  var tecVals = chartData.hstech.map(function(d){ return d.close; });
+
+  var option = {
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(17,24,39,0.9)',
+      borderColor: '#1a1f2e',
+      textStyle: { color: '#e0e0e0', fontSize: 12 },
+    },
+    legend: {
+      data: ['恒生指数', '恒生科技'],
+      textStyle: { color: '#7f8c8d', fontSize: 11 },
+      top: 5,
+    },
+    grid: { left: 50, right: 20, top: 40, bottom: 30 },
+    xAxis: {
+      type: 'category',
+      data: dates,
+      axisLine: { lineStyle: { color: '#1a1f2e' } },
+      axisLabel: { color: '#555', fontSize: 10, rotate: 45 },
+      splitLine: { show: false },
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: '恒指',
+        nameTextStyle: { color: '#2980b9', fontSize: 10 },
+        splitLine: { lineStyle: { color: '#1a1f2e', type: 'dashed' } },
+        axisLabel: { color: '#555', fontSize: 10 },
+      },
+      {
+        type: 'value',
+        name: '恒科',
+        nameTextStyle: { color: '#e67e22', fontSize: 10 },
+        splitLine: { show: false },
+        axisLabel: { color: '#555', fontSize: 10 },
+      }
+    ],
+    series: [
+      {
+        name: '恒生指数',
+        type: 'line',
+        data: hsiVals,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { width: 2, color: '#2980b9' },
+        areaStyle: {
+          color: {
+            type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(41,128,185,0.25)' },
+              { offset: 1, color: 'rgba(41,128,185,0.02)' },
+            ]
+          }
+        },
+        yAxisIndex: 0,
+      },
+      {
+        name: '恒生科技',
+        type: 'line',
+        data: tecVals,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { width: 2, color: '#e67e22' },
+        areaStyle: {
+          color: {
+            type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(230,126,34,0.2)' },
+              { offset: 1, color: 'rgba(230,126,34,0.02)' },
+            ]
+          }
+        },
+        yAxisIndex: 1,
+      }
+    ]
+  };
+  myChart.setOption(option);
+  window.addEventListener('resize', function(){ myChart.resize(); });
+
+  // ══ 南向资金走势图（柱状图：正=红柱净流入，负=绿柱净流出） ══
+  var southDom = document.getElementById('south-chart');
+  if (southDom && chartData.south && chartData.south.length > 0) {
+    var southChart = echarts.getInstanceByDom(southDom) || echarts.init(southDom);
+    var sDates = chartData.south.map(function(d){ return d.date.slice(5); });
+    var sNet = chartData.south.map(function(d){ return d.net; });
+    var sAccum = chartData.south.map(function(d){ return d.accum; });
+
+    var southOption = {
+      backgroundColor: 'transparent',
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: 'rgba(17,24,39,0.9)',
+        borderColor: '#1a1f2e',
+        textStyle: { color: '#e0e0e0', fontSize: 12 },
+        formatter: function(params) {
+          var p0 = params[0], p1 = params[1];
+          return '<b>' + p0.axisValue + '</b><br/>'
+            + '<span style="color:' + (p0.value >= 0 ? '#e74c3c' : '#27ae60') + '">净买额: ' + p0.value.toFixed(2) + '亿</span><br/>'
+            + '<span style="color:#8e44ad">历史累计: ' + (p1.value * 10000).toFixed(0) + '亿</span>';
+        }
+      },
+      legend: {
+        data: ['当日净买额', '历史累计(万亿)'],
+        textStyle: { color: '#7f8c8d', fontSize: 11 },
+        top: 5,
+      },
+      grid: { left: 55, right: 20, top: 40, bottom: 30 },
+      xAxis: {
+        type: 'category',
+        data: sDates,
+        axisLine: { lineStyle: { color: '#1a1f2e' } },
+        axisLabel: { color: '#555', fontSize: 10, rotate: 45 },
+        splitLine: { show: false },
+      },
+      yAxis: [
+        {
+          type: 'value',
+          name: '净买额(亿)',
+          nameTextStyle: { color: '#7f8c8d', fontSize: 10 },
+          splitLine: { lineStyle: { color: '#1a1f2e', type: 'dashed' } },
+          axisLabel: { color: '#555', fontSize: 10 },
+        },
+        {
+          type: 'value',
+          name: '累计(万亿)',
+          nameTextStyle: { color: '#8e44ad', fontSize: 10 },
+          splitLine: { show: false },
+          axisLabel: {
+            color: '#555', fontSize: 10,
+            formatter: function(v){ return (v).toFixed(0); }
+          },
+        }
+      ],
+      series: [
+        {
+          name: '当日净买额',
+          type: 'bar',
+          data: sNet.map(function(v){
+            return {
+              value: v,
+              itemStyle: {
+                color: v >= 0 ? '#e74c3c' : '#27ae60',
+              }
+            };
+          }),
+          barWidth: '60%',
+        },
+        {
+          name: '历史累计(万亿)',
+          type: 'line',
+          data: sAccum,
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { width: 2, color: '#8e44ad' },
+        }
+      ]
+    };
+    southChart.setOption(southOption);
+    window.addEventListener('resize', function(){ southChart.resize(); });
+  }
+}
+
+load();
+setInterval(load, 120000);
+</script>
+
+<div id="tip-box"><span class="tip-close" id="tip-close">&times;</span><span id="tip-text"></span></div>
+
+<script>
+(function(){
+var tp=document.getElementById("tip-box"),tx=document.getElementById("tip-text"),cl=document.getElementById("tip-close");
+if(!tp||!tx||!cl)return;
+document.querySelectorAll(".info-tip").forEach(function(el){
+el.addEventListener("click",function(e){
+e.stopPropagation();var d=this.getAttribute("data-desc");if(!d)return;
+tx.textContent=d;tp.classList.add("show");
+tp.style.top=e.clientY+8+"px";
+tp.style.left=Math.min(e.clientX,window.innerWidth-350-10)+"px";
+})});
+cl.addEventListener("click",function(e){e.stopPropagation();tp.classList.remove("show");});
+document.addEventListener("click",function(e){if(!tp.contains(e.target))tp.classList.remove("show");});
+})();
+</script>
+
+</body>
+</html>

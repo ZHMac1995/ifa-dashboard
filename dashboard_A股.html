@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A股完整看板 v2.0 - IFA投研数据看板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e17;color:#e0e0e0}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 0 16px;border-bottom:1px solid #1a1f2e;margin-bottom:20px}
+.nav-bar h1{font-size:1.2rem;color:#fff}
+.nav-bar h1 span{color:#e74c3c}
+.back-link{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:transparent;color:#7f8c8d;border:1px solid #2a2f3e;border-radius:5px;text-decoration:none;font-size:.8rem;transition:all .2s}
+.back-link:hover{background:#1a1f2e;color:#fff}
+
+.section{margin-bottom:22px}
+.section h2{font-size:1rem;color:#e74c3c;margin-bottom:12px;padding-left:10px;border-left:3px solid #e74c3c}
+.section h2 .bd{display:inline-block;padding:1px 6px;border-radius:3px;font-size:.6rem;font-weight:600;vertical-align:middle;margin-left:6px;background:#e74c3c20;color:#e74c3c}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:18px}
+.card{background:#111827;border-radius:8px;padding:12px 14px;position:relative}
+.card .label{font-size:.72rem;color:#7f8c8d;margin-bottom:4px}
+.card .value{font-size:1.15rem;font-weight:600;color:#fff}
+.card .value.red{color:#e74c3c}
+.card .value.green{color:#27ae60}
+.card .value.loading{color:#444}
+.card .sub{font-size:.7rem;color:#7f8c8d;margin-top:4px}
+.card .change{font-size:.75rem;margin-top:2px}
+.card .change.loading{color:#444}
+.card .src-info{font-size:.6rem;color:#3a3f4e;margin-top:6px;padding-top:4px;border-top:1px solid #1a1f2e;line-height:1.5}
+.card .src-info .si-s{color:#4a4f5e}
+.card .src-info .si-f{color:#3a3f4e}
+
+.chart-wrap{background:#111827;border-radius:8px;width:100%;margin-bottom:6px;overflow:hidden}
+.chart-wrap .chart-inner{width:100%;min-height:320px;height:100%}
+.chart-wrap .src-info{font-size:.6rem;color:#3a3f4e;padding:0 14px 10px;line-height:1.5}
+.chart-wrap .src-info .si-s{color:#4a4f5e}
+.chart-wrap .src-info .si-f{color:#3a3f4e}
+
+.chart-label{font-size:1.05rem;font-weight:700;color:#e8e8e8;margin:14px 0 8px 0;padding-left:12px;border-left:3px solid #e74c3c;letter-spacing:0.3px}
+.chart-label .sub{font-size:.7rem;color:#7f8c8d;font-weight:400;margin-left:6px}
+.chart-label .icon{margin-right:6px}
+.update-info{text-align:center;padding:16px 0;font-size:.72rem;color:#555;border-top:1px solid #1a1f2e;margin-top:10px}
+
+@media(max-width:600px){
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-bar{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+.info-tip{display:inline;cursor:pointer;margin-left:3px;color:#5a5a6e;font-size:.82em;position:relative;user-select:none}
+.info-tip:hover{color:#e67e22}
+#tip-box{position:fixed;z-index:9999;max-width:340px;padding:10px 13px;background:#1e2433;color:#ccc;border:1px solid #3a3f5e;border-radius:8px;font-size:.78rem;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:none;opacity:0;transition:opacity .15s}
+#tip-box.show{opacity:1;pointer-events:auto}
+#tip-box .tip-close{position:absolute;top:4px;right:8px;cursor:pointer;color:#666;font-size:1rem;line-height:1}
+#tip-box .tip-close:hover{color:#ccc}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav-bar">
+    <h1><span style="font-size:1.8em">A股</span> 完整数据看板</h1>
+    <a href="index.html" class="back-link">&larr; 返回首页</a>
+  </div>
+
+  <!-- 一、大盘指数 -->
+  <div class="section">
+    <h2>大盘指数 <span class="bd">实时</span></h2>
+    <div class="card-grid">
+      <div class="card" data-id="CN-DI1">
+        <div class="label">沪深300<span class="info-tip" data-desc="沪深300指数（点）：A股大盘蓝筹基准。A股交易日09:30~15:00每10分钟新浪实时拉取。09:30前显示昨收，开盘瞬间可能有跳变（隔夜信息+竞价结果）。15:00后显示当日收盘价。数据源：新浪财经。" data-tip-for="CN-DI1">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="change loading">--</div>
+      </div>
+      <div class="card" data-id="CN-DI2">
+        <div class="label">上证综指<span class="info-tip" data-desc="上证综合指数（点）：上交所全部股票。取值时间及说明同沪深300。数据源：新浪财经。" data-tip-for="CN-DI2">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="change loading">--</div>
+      </div>
+      <div class="card" data-id="CN-DI3">
+        <div class="label">深证成指<span class="info-tip" data-desc="深证成份指数（点）：深交所大盘股。取值时间同沪深300。数据源：新浪财经。" data-tip-for="CN-DI3">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="change loading">--</div>
+      </div>
+      <div class="card" data-id="CN-DI4">
+        <div class="label">创业板指<span class="info-tip" data-desc="创业板指数（点）：深交所创业板高成长公司。取值时间同沪深300。数据源：新浪财经。" data-tip-for="CN-DI4">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="change loading">--</div>
+      </div>
+      <div class="card" data-id="CN-DI5">
+        <div class="label">科创50<span class="info-tip" data-desc="科创50指数（点）：上交所科创板50家公司。取值时间同沪深300。数据源：新浪财经。" data-tip-for="CN-DI5">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="change loading">--</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二、资金与成交量 -->
+  <div class="section">
+    <h2>资金与成交量 <span class="bd">日频/实时</span></h2>
+    <div class="card-grid">
+      <div class="card" data-id="CN-001">
+        <div class="label">A股成交额(沪+深)<span class="info-tip" data-desc="沪深两市合计成交额（亿元）：反映A股活跃度。交易日09:30~15:00盘中实时累积，从零开始逐步增大。每10分钟刷新。上午看到的值低于下午是因累积效应，非异常。数据源：新浪财经。" data-tip-for="CN-001">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">亿元</div>
+      </div>
+      <div class="card" data-id="CN-002">
+        <div class="label">两融余额(沪深合计)<span class="info-tip" data-desc="两融余额（亿元）：沪深两市融资融券余额，反映A股杠杆水平。T+1数据。交易日15:30之前显示上一交易日值，15:30之后显示当日值。周末看到的仍是周五值，因为没有新交易，非看板问题。数据源：东方财富（akshare）。" data-tip-for="CN-002">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">亿元</div>
+      </div>
+      <div class="card" data-id="CN-003">
+        <div class="label">北向资金今日<span class="info-tip" data-desc="北向资金（亿元）：沪深港股通当日净买入额，反映外资流入A股意愿。交易日09:30~16:00实时预估，约18:00结算完成。盘中10:30和14:30有交易所数据点。正值=流入（外资买入A股），负值=流出。与Wind/Choice可能有1-2亿差异。数据源：东方财富/同花顺。" data-tip-for="CN-003">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub loading">--</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、利率与汇率 -->
+  <div class="section">
+    <h2>利率与汇率 <span class="bd">日频</span></h2>
+    <div class="card-grid">
+      <div class="card" data-id="CN-R01">
+        <div class="label">中国10Y国债<span class="info-tip" data-desc="中国1Y国债收益率（%）：反映短期无风险利率。中债估值每工作日约17:00发布当日值。盘中没有实时变动，因国内债券市场惯例。中债估值与活跃券成交价可能有5-10bp差异。数据源：中国债券信息网。" data-tip-for="CN-R01">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-R02">
+        <div class="label">中国2Y国债<span class="info-tip" data-desc="中国5Y国债收益率（%）：取值时间及说明同1Y国债。数据源：中国债券信息网。" data-tip-for="CN-R02">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-R03">
+        <div class="label">国债利差(10Y-2Y)<span class="info-tip" data-desc="中国10Y国债收益率（%）：取值时间及说明同1Y国债。数据源：中国债券信息网。" data-tip-for="CN-R03">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-R04">
+        <div class="label">LPR 1年期<span class="info-tip" data-desc="1年期LPR（%）：贷款市场报价利率。央行每月20日上午9:15发布（节假日顺延）。非发布日永远显示最近一期值，一个月甚至几个月不变是LPR的政策利率属性决定的。数据源：中国人民银行。" data-tip-for="CN-R04">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-R05">
+        <div class="label">LPR 5年期<span class="info-tip" data-desc="5年期以上LPR（%）：主要影响房贷利率。取值时间同1年LPR。通常高于1年期，反映长期贷款期限溢价。数据源：中国人民银行。" data-tip-for="CN-R05">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-R06">
+        <div class="label">美元/人民币中间价<span class="info-tip" data-desc="人民币中间价：央行每个工作日约09:15发布。这是中间价（指导价），非即期交易价。即期汇率围绕中间价上下浮动2%。如需即期汇率请参考美元/人民币（US-004_cny）指标。数据源：中国外汇交易中心。" data-tip-for="CN-R06">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、宏观经济 -->
+  <div class="section">
+    <h2>宏观经济 <span class="bd">月频/季频</span></h2>
+    <div class="card-grid">
+      <div class="card" data-id="CN-M01">
+        <div class="label">CPI同比<span class="info-tip" data-desc="M2货币供应同比（%）：反映货币宽松程度。FRED月度数据每月10-15日发布上月值。每月仅刷新一次。数据源：FRED（M2SL）。" data-tip-for="CN-M01">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">%</div>
+      </div>
+      <div class="card" data-id="CN-M02">
+        <div class="label">制造业PMI<span class="info-tip" data-desc="社会融资规模存量同比（%）：反映实体经济融资状况。每月10-15日央行发布。每月仅刷新一次。数据源：东方财富。" data-tip-for="CN-M02">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub"></div>
+      </div>
+      <div class="card" data-id="CN-M03">
+        <div class="label">GDP同比<span class="info-tip" data-desc="国内生产总值同比增速（%），下方显示对应GDP绝对值（亿元）。季度数据，约季后1个月发布。数据源：东方财富。" data-tip-for="CN-M03">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">加载中...</div>
+      </div>
+      <div class="card" data-id="CN-M04">
+        <div class="label">社融增量<span class="info-tip" data-desc="制造业PMI（%）：50为荣枯线，大于50扩张，小于50收缩。每月最后一天发布当月数据。每月仅刷新一次。数据源：东方财富。" data-tip-for="CN-M04">&#x24d8;</span></div>
+        <div class="value loading">--</div>
+        <div class="sub">万亿</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、走势图 -->
+  <div class="section">
+    <h2>走势图 <span class="bd">60日</span></h2>
+    <div class="chart-wrap">
+      <div class="chart-label"><span class="icon">📊</span>沪深300 日线走势 <span class="sub">(以60日前为基准)</span></div>
+      <div id="cn-chart" class="chart-inner"></div>
+      <div class="src-info">
+        <div class="si-s">来源: akshare (东方财富) | 更新: 每交易日收盘后</div>
+        <div class="si-f">沪深300 日线收盘价</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="margin-top:10px">
+      <div class="chart-label"><span class="icon">💰</span>北向资金 日净买额 <span class="sub">(正=流入 负=流出)</span></div>
+      <div id="north-chart" class="chart-inner"></div>
+      <div class="src-info">
+        <div class="si-s">来源: 同花顺10jqka 北向资金日频 | 更新: 每交易日收盘后</div>
+        <div class="si-f">北向资金 日净买额（正=流入 负=流出）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="update-info">
+    数据仅供参考，不构成投资建议 | A股完整看板 v2.0<br>
+    <span id="lastUpdate">数据加载中...</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+const DATA_URL='dashboard_data.json?_t='+Date.now();
+let lastTs=0;
+
+function fmtChange(val, unit) {
+  if (val === undefined || val === null || val === '--') return '--';
+  var n = parseFloat(val);
+  if (isNaN(n)) return val;
+  var prefix = n >= 0 ? '+' : '';
+  return prefix + n.toFixed(2) + (unit || '%');
+}
+
+function fmtVal(val) {
+  if (val === undefined || val === null || val === '--') return '--';
+  var n = parseFloat(val);
+  if (isNaN(n)) return val;
+  if (Math.abs(n) >= 10000) return (n / 10000).toFixed(2) + '万';
+  if (Math.abs(n) >= 1) return n.toFixed(2);
+  return n.toFixed(4);
+}
+
+async function load(){
+  try{
+    var r=await fetch(DATA_URL);
+    if(!r.ok)return;
+    var d=await r.json();
+    if(d.timestamp===lastTs)return;
+    lastTs=d.timestamp;
+    var t=document.getElementById('lastUpdate');
+    if(d.update_time) t.textContent='更新时间: '+d.update_time;
+
+    var v=d.values||{};
+
+    // 通用卡片渲染：按data-id匹配
+    document.querySelectorAll('.card').forEach(function(el){
+      var id=el.dataset.id;
+      if(!id)return;
+      var srcData = d.meta && d.meta[id] ? d.meta[id] : null;
+      var o=v[id];
+      var valueEl=el.querySelector('.value');
+      var changeEl=el.querySelector('.change');
+      var subEl=el.querySelector('.sub');
+      var srcEl=el.querySelector('.src-info');
+
+      if(!srcEl && srcData){
+        srcEl=document.createElement('div');
+        srcEl.className='src-info';
+        srcEl.innerHTML='<div class="si-s">来源: '+srcData.source+' | 更新: '+srcData.update_freq+'</div><div class="si-f">'+srcData.data_time+'</div>';
+        el.appendChild(srcEl);
+      } else if(srcEl && srcData){
+        srcEl.innerHTML='<div class="si-s">来源: '+srcData.source+' | 更新: '+srcData.update_freq+'</div><div class="si-f">'+(o.data_time||o.data_date||'')+'</div>';
+      }
+
+      if(!o) return;
+
+      // 北向特殊处理：三栏 (prev_close / today_close / realtime)
+      if(id==='CN-003'){
+        if(valueEl){
+          if(o.realtime && o.realtime!=='非交易时间' && o.realtime!=='非交易日'){
+            valueEl.textContent=o.realtime;
+            valueEl.className='value';
+            var rv=parseFloat(o.realtime);
+            if(!isNaN(rv)){
+              valueEl.className=rv>=0?'value red':'value green';
+            }
+          } else if(o.today_close && o.today_close!=='今日尚未收盘'){
+            valueEl.textContent=o.today_close;
+            valueEl.className='value';
+          } else {
+            valueEl.textContent=o.prev_close||'--';
+            valueEl.className='value';
+          }
+        }
+        if(subEl && o.realtime_detail){
+          subEl.textContent=o.realtime_detail;
+          subEl.className='sub';
+        } else if(subEl && o.unit){
+          subEl.textContent=o.unit;
+          subEl.className='sub';
+        }
+        return;
+      }
+
+      // 普通卡片
+      if(o.value!==undefined && valueEl){
+        valueEl.textContent=fmtVal(o.value);
+        valueEl.className='value';
+        if(o.change!==undefined && o.change!==null){
+          var c=parseFloat(o.change);
+          if(changeEl){
+            if(c>0){
+              changeEl.textContent='+' + c.toFixed(2) +'%';
+              changeEl.className='change';
+              changeEl.style.color='#e74c3c';
+              if(valueEl) valueEl.style.color='#e74c3c';
+            } else if(c<0){
+              changeEl.textContent=c.toFixed(2)+'%';
+              changeEl.className='change';
+              changeEl.style.color='#27ae60';
+              if(valueEl) valueEl.style.color='#27ae60';
+            } else {
+              changeEl.textContent='0.00%';
+              changeEl.className='change';
+              changeEl.style.color='#7f8c8d';
+              if(valueEl) valueEl.style.color='#fff';
+            }
+          }
+        } else {
+          if(changeEl) { changeEl.textContent=''; changeEl.className='change'; }
+        }
+        if(o.unit && subEl && id!=='CN-003'){
+          // 有绝对值(abs)时显示复合信息: 同比:X.X% | YYY亿
+          if(o.abs!==undefined){
+            var absStr=typeof o.abs==='number'?o.abs.toLocaleString('en-US'):o.abs;
+            var qtr=o._quarter||o.data_date||'';
+            subEl.textContent=qtr+' 同比:'+o.value+'% | '+absStr+'亿';
+          } else if(o.unit==='%' && !o.change) subEl.textContent='%';
+          else if(o.unit) subEl.textContent=o.unit;
+        }
+      }
+    });
+
+    // ══ 沪深300走势图 (百分比坐标) ══
+    var chartDom=document.getElementById('cn-chart');
+    var chartData=d.cn_chart || {};
+    if(chartDom && chartData.hs300 && chartData.hs300.length>0){
+      var myChart=echarts.getInstanceByDom(chartDom)||echarts.init(chartDom);
+      var cDates=chartData.hs300.map(function(x){return x.date.slice(5);});
+      var cClose=chartData.hs300.map(function(x){return x.close;})
+      // 以首日为基准转百分比
+      var base=cClose[0];
+      var cPct=cClose.map(function(v){return (v/base-1)*100;});
+      var latestPct=cPct[cPct.length-1];
+      var colorCls=latestPct>=0?'red':'green';
+
+      var option={
+        backgroundColor:'transparent',
+        tooltip:{
+          trigger:'axis',
+          backgroundColor:'rgba(17,24,39,0.9)',
+          borderColor:'#1a1f2e',
+          textStyle:{color:'#e0e0e0',fontSize:12},
+          formatter:function(p){
+            var idx=p[0].dataIndex;
+            var absVal=cClose[idx];
+            var pctVal=p[0].value;
+            var cls=pctVal>=0?'#e74c3c':'#27ae60';
+            return '<b>'+p[0].axisValue+'</b><br/>沪深300: <b>'+absVal.toFixed(2)+'</b> ('+pctVal.toFixed(2)+'%)<br/><span style="color:'+cls+'">累计: '+(pctVal>=0?'+':'')+pctVal.toFixed(2)+'%</span>';
+          }
+        },
+        legend:{data:['沪深300'],textStyle:{color:'#e0e0e0',fontSize:11},top:2,left:10,itemWidth:12,itemHeight:8},
+        grid:{left:45,right:25,top:35,bottom:30},
+        xAxis:{
+          type:'category',data:cDates,
+          axisLine:{lineStyle:{color:'#1a1f2e'}},
+          axisLabel:{color:'#555',fontSize:10,rotate:45},
+          splitLine:{show:false},
+        },
+        yAxis:{
+          type:'value',
+          axisLabel:{color:'#555',fontSize:10,formatter:'{value}%'},
+          splitLine:{lineStyle:{color:'#1a1f2e',type:'dashed'}},
+        },
+        series:[{
+          type:'line',data:cPct,
+          smooth:true,
+          symbol:'none',
+          lineStyle:{width:2,color:'#2980b9'},
+          areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(41,128,185,0.3)'},{offset:1,color:'rgba(41,128,185,0.02)'}]}},
+          markLine:{
+            silent:true,
+            data:[
+              {yAxis:0,lineStyle:{color:'#555',type:'dashed',width:1},label:{color:'#555',fontSize:9,formatter:'基准'}},
+              {type:'average',name:'均值',lineStyle:{color:'#7f8c8d',type:'dashed',width:1},label:{color:'#7f8c8d',fontSize:10,formatter:'均值: {c}%'}}
+            ]
+          },
+          markPoint:{
+            data:[
+              {type:'max',name:'最高',symbolSize:35,symbol:'pin',itemStyle:{color:'#e74c3c'},label:{color:'#fff',fontSize:10,formatter:function(p){return p.value.toFixed(2)+'%';}}},
+              {type:'min',name:'最低',symbolSize:35,symbol:'pin',itemStyle:{color:'#27ae60'},label:{color:'#fff',fontSize:10,formatter:function(p){return p.value.toFixed(2)+'%';}}}
+            ]
+          }
+        }]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize',function(){myChart.resize();});
+    }
+
+    // ══ 北向资金走势图（柱状图：正=红柱净流入，负=绿柱净流出） ══
+    var northDom=document.getElementById('north-chart');
+    if(northDom && chartData.north && chartData.north.length>0){
+      var northChart=echarts.getInstanceByDom(northDom)||echarts.init(northDom);
+      // 过滤掉None值（只有真实数据才渲染，避免tooltip空值报错）
+      var nValid = chartData.north.filter(function(d){return d.net!==null && d.net!==undefined;});
+      var nDates=nValid.map(function(d){return d.date.slice(5);});
+      var nNet=nValid.map(function(d){return d.net;});
+      var northOption={
+        backgroundColor:'transparent',
+        tooltip:{
+          trigger:'axis',
+          axisPointer:{type:'shadow',snap:true,animation:false},
+          enterable:true,
+          confine:true,
+          transitionDuration:0,
+          backgroundColor:'rgba(17,24,39,0.9)',
+          borderColor:'#1a1f2e',
+          textStyle:{color:'#e0e0e0',fontSize:12},
+          formatter:function(p){
+            if(!p||!p[0])return '';
+            var v=p[0].value;
+            if(v===null || v===undefined) return '<b>'+p[0].axisValue+'</b><br/>暂无数据';
+            return '<b>'+p[0].axisValue+'</b><br/>'
+              + '<span style="color:'+(v>=0?'#e74c3c':'#27ae60')+'">北向净买额: '+v.toFixed(1)+'亿</span>';
+          }
+        },
+        legend:{data:['北向净买额'],textStyle:{color:'#7f8c8d',fontSize:11},top:5},
+        grid:{left:55,right:20,top:40,bottom:30},
+        xAxis:{
+          type:'category',data:nDates,
+          axisLine:{lineStyle:{color:'#1a1f2e'}},
+          axisLabel:{color:'#555',fontSize:10,rotate:45},
+          splitLine:{show:false},
+        },
+        yAxis:{
+          type:'value',
+          name:'净买额(亿)',
+          nameTextStyle:{color:'#7f8c8d',fontSize:10},
+          splitLine:{lineStyle:{color:'#1a1f2e',type:'dashed'}},
+          axisLabel:{color:'#555',fontSize:10},
+        },
+        series:[{
+          name:'北向净买额',
+          type:'bar',
+          data:nNet.map(function(v){
+            return {
+              value:v,
+              itemStyle:{color:v>=0?'#e74c3c':'#27ae60'}
+            };
+          }),
+          barWidth:'60%',
+        }]
+      };
+      northChart.setOption(northOption, true);
+      window.addEventListener('resize',function(){northChart.resize();});
+    }
+  }catch(e){console.warn('load fail:',e)}
+}
+load();
+setInterval(load,120000);
+</script>
+
+<div id="tip-box"><span class="tip-close" id="tip-close">&times;</span><span id="tip-text"></span></div>
+
+<script>
+(function(){
+var tp=document.getElementById("tip-box"),tx=document.getElementById("tip-text"),cl=document.getElementById("tip-close");
+if(!tp||!tx||!cl)return;
+document.querySelectorAll(".info-tip").forEach(function(el){
+el.addEventListener("click",function(e){
+e.stopPropagation();var d=this.getAttribute("data-desc");if(!d)return;
+tx.textContent=d;tp.classList.add("show");
+tp.style.top=e.clientY+8+"px";
+tp.style.left=Math.min(e.clientX,window.innerWidth-350-10)+"px";
+})});
+cl.addEventListener("click",function(e){e.stopPropagation();tp.classList.remove("show");});
+document.addEventListener("click",function(e){if(!tp.contains(e.target))tp.classList.remove("show");});
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IFA 投研数据看板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0e17;color:#e0e0e0;display:flex;flex-direction:column}
+.container{max-width:1400px;width:100%;margin:0 auto;padding:20px;flex:1;display:flex;flex-direction:column}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 0 18px;border-bottom:1px solid #1a1f2e;flex-shrink:0}
+.header h1{font-size:2rem;color:#fff;letter-spacing:1px}
+.header h1 span{color:#e67e22}
+.header-time{display:flex;align-items:center;gap:10px;font-size:.9rem;color:#95a5a6;line-height:1.5;padding-bottom:6px}
+.header-time .clock{font-size:1.2rem;color:#ecf0f1;font-weight:600;letter-spacing:1px}
+.header-time .data-ts{font-size:.95rem;color:#b0b0b0;font-weight:600}
+.header-time .sep{color:#3a3f4e;font-size:.8rem}
+.header-right a{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#e67e22;color:#fff;border-radius:5px;text-decoration:none;font-size:.85rem;font-weight:600;transition:background .2s}
+.header-right a:hover{background:#d35400}
+.main{display:grid;grid-template-columns:1fr;gap:18px;margin-top:20px;flex:1}
+@media(min-width:900px){.main{grid-template-columns:1fr 1fr}}
+.left,.right{display:flex;flex-direction:column;gap:18px}
+.mkt{background:#111827;border-radius:10px;padding:14px 16px;flex:1;display:flex;flex-direction:column}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-shrink:0}
+.ig+.ig{margin-top:12px}
+.mh h2{font-size:1.6rem;color:#fff}
+.ml{font-size:.75rem;color:#e67e22;text-decoration:none}
+.ml:hover{text-decoration:underline}
+.ig{display:flex;flex-wrap:wrap;gap:12px;flex:1;align-content:stretch}
+.cols-2 .ind{flex:1 1 calc(50% - 6px);display:flex;flex-direction:column;justify-content:center}
+.cols-3 .ind{flex:1 1 calc(33.33% - 8px);display:flex;flex-direction:column;justify-content:center}
+.cols-4 .ind{flex:1 1 calc(25% - 9px);display:flex;flex-direction:column;justify-content:center}
+.ind{background:#1a1f2e;border-radius:6px;padding:8px 6px;text-align:center;position:relative}
+.il{font-size:.9rem;color:#7f8c8d;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.info-tip{display:inline;cursor:pointer;margin-left:3px;color:#5a5a6e;font-size:.82em;position:relative}
+.info-tip:hover{color:#e67e22}
+#tip-box{position:fixed;z-index:9999;max-width:340px;padding:10px 13px;background:#1e2433;color:#ccc;border:1px solid #3a3f5e;border-radius:8px;font-size:.78rem;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:none;opacity:0;transition:opacity .15s}
+#tip-box.show{opacity:1;pointer-events:auto}
+#tip-box .tip-close{position:absolute;top:4px;right:8px;cursor:pointer;color:#666;font-size:1rem;line-height:1}
+#tip-box .tip-close:hover{color:#ccc}
+.iv{font-size:1.1rem;font-weight:700;color:#fff;line-height:1.4}
+.iv.positive{color:#e74c3c}
+.iv.negative{color:#27ae60}
+.iv.loading{color:#444}
+.ic{font-size:.8rem;color:#7f8c8d;margin-top:2px;font-weight:500}
+.ic.positive{color:#e74c3c}
+.ic.negative{color:#27ae60}
+.dd{font-size:.6rem;color:#4a4f5e;margin-top:3px;font-weight:400}
+.south-container{display:flex;flex-direction:column;gap:2px;padding:2px 0;width:100%}
+.south-row{display:flex;justify-content:space-between;font-size:.8rem;line-height:1.4;padding:1px 4px;align-items:center}
+.south-label{color:#7f8c8d;font-weight:400}
+.south-val{color:#ecf0f1;font-weight:600}
+.south-detail{color:#5a7a8a;font-size:.65rem;font-weight:400;margin-left:4px}
+.ind.south-card{min-height:100px}
+.al-badge{display:inline-block;padding:1px 5px;border-radius:3px;font-size:.6rem;font-weight:600;line-height:1.4;margin-left:4px;vertical-align:middle}
+.al-yellow{background:#f39c12;color:#000}
+.al-orange{background:#e67e22;color:#fff}
+.al-red{background:#e74c3c;color:#fff}
+
+/* 非农就业区块 */
+.nfp-box{background:#111827;border-radius:10px;padding:12px 16px;border:1px solid #1a1f2e;margin-top:12px}
+.nfp-title{font-size:1rem;color:#8e44ad;font-weight:600;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #1a1f2e;display:flex;justify-content:space-between}
+.nfp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.nfp-item{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;background:#1a1f2e;border-radius:4px;font-size:.82rem;line-height:1.5}
+.nfp-item .nfp-name{color:#7f8c8d;white-space:nowrap}
+.nfp-item .nfp-val{color:#ecf0f1;font-weight:600}
+.nfp-item .nfp-month{color:#5a5a6e;font-size:.68rem;margin-left:4px;font-weight:400}
+@media(max-width:600px){.nfp-grid{grid-template-columns:1fr}}
+
+.footer{text-align:center;padding:18px 0;margin-top:20px;border-top:1px solid #1a1f2e;font-size:.72rem;color:#555;line-height:1.6;flex-shrink:0}
+@media(max-width:600px){.cols-3{grid-template-columns:repeat(2,1fr)}.cols-4{grid-template-columns:repeat(2,1fr)}}
+</style>
+<style>
+.audit-dot-ok{background:#27ae60;box-shadow:0 0 6px #27ae60}
+.audit-dot-warn{background:#e67e22;box-shadow:0 0 6px #e67e22}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>IFA <span>投研数据看板</span></h1>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:24px">
+      <div class="header-time">
+        <span class="data-ts">数据更新: <span id="lastUpdate">加载中...</span></span>
+        <span class="sep">|</span>
+        <span class="clock" id="clock">--:--:--</span>
+      </div>
+      <div class="header-right">
+        <a href="https://ZHMac1995.github.io/news-daily/" target="_blank">新闻日报</a>
+        <a href="https://ZHMac1995.github.io/news-daily/geopolitics/" target="_blank" style="background:#c0392b">国际地缘局势</a>
+        <a href="data_update_log.html" target="_blank">数据更新记录</a>
+        <a href="people_statements.html" target="_blank" style="background:#8e44ad">重点人物历史言论</a>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="left">
+    <div class="mkt" style="border-top:3px solid #2980b9">
+      <div class="mh"><h2 style="color:#2980b9;font-size:1.6rem">港股</h2><a href="dashboard_港股.html" class="ml">完整 &raquo;</a></div>
+      <div class="ig cols-2">          <div class="ind south-card" data-id="HK-001">
+            <div class="il">南向资金(亿)<span class="info-tip" data-desc="南向资金（亿港元）：沪深港股通南向当日净买入额，反映内地资金流入港股意愿。交易日09:30~16:00实时预估，约18:00结算完成。盘中为实时预估值，收盘后最终确认。正值=净买入（内地资金流入港股），负值=净卖出。数据源：东方财富（akshare）。" data-tip-for="HK-001">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="HK-002">
+            <div class="il">Hibor隔夜(%)<span class="info-tip" data-desc="HIBOR隔夜（%）：香港银行间隔夜拆借利率，反映港元短期流动性。香港财资公会每个工作日约11:15发布当日定价。本看板16:00之后拉取当日更新。16:00之前为前一工作日值。月中/季末可能因流动性收紧从1%跳升至3-4%，一周左右回落属正常现象。数据源：东方财富。" data-tip-for="HK-002">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="HK-003">
+            <div class="il">港元汇率<span class="info-tip" data-desc="港元汇率：港元兑人民币即期汇率。港股交易日09:30~16:00新浪实时更新。香港实行联系汇率制度，港元与美元挂钩，在7.75~7.85之间窄幅波动，看到汇率几乎不变是正常现象，非显示问题。数据源：新浪财经。" data-tip-for="HK-003">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="HK-005">
+            <div class="il">恒生指数(点)<span class="info-tip" data-desc="恒生指数（点）：香港最具代表性的基准指数。港股交易日09:30~16:00每10分钟新浪实时拉取。16:00收盘后显示当日价。收市竞价时段（16:00~16:08）可能有约0.1%以内的微小差异。数据源：新浪财经。" data-tip-for="HK-005">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="HK-DI1">
+            <div class="il">恒生科技(点)<span class="info-tip" data-desc="恒生科技指数（点）：追踪在港上市科技公司（腾讯、阿里、美团等）。取值时间及更新方式同恒生指数。数据源：新浪财经。" data-tip-for="HK-DI1">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="HK-DI2">
+            <div class="il">国企指数(点)<span class="info-tip" data-desc="恒生国企指数（点）：追踪在港上市H股及中资企业。取值时间同恒生指数。数据源：新浪财经。" data-tip-for="HK-DI2">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div></div>
+
+    </div>
+    <div class="mkt" style="border-top:3px solid #e74c3c">
+      <div class="mh"><h2 style="color:#e74c3c;font-size:1.6rem">A股</h2><a href="dashboard_A股.html" class="ml">完整 &raquo;</a></div>
+      <div class="ig cols-2">          <div class="ind south-card" data-id="CN-003">
+            <div class="il">北向资金(亿)<span class="info-tip" data-desc="北向资金（万亿元）：沪深港股通当日净买入额，反映外资流入A股意愿。交易日09:30~16:00实时预估，约18:00结算。盘中10:30/14:30有交易所数据点。正值=流入（外资买入A股），负值=流出。与Wind/Choice可能有1-2亿差异。数据源：东方财富/同花顺。" data-tip-for="CN-003">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="CN-001">
+            <div class="il">成交额(亿)<span class="info-tip" data-desc="沪深两市合计成交额（亿元）：反映A股活跃度。交易日09:30~15:00盘中实时累积，从零开始。每10分钟刷新。上午看到的值低于下午是因累积效应，非异常。最终成交额在15:00后显示。数据源：新浪财经。" data-tip-for="CN-001">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div></div>
+      <div class="ig cols-3">          <div class="ind" data-id="CN-002">
+            <div class="il">两融余额(亿)<span class="info-tip" data-desc="两融余额（亿元）：沪深两市融资融券余额，反映A股杠杆水平。T+1数据，交易日15:30之后显示当日最新值，之前显示上一交易日值。周末/休市不更新（周五值持续到周一）。数据源：东方财富（akshare）。" data-tip-for="CN-002">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="CN-DI3">
+            <div class="il">深证成指<span class="info-tip" data-desc="深证成份指数（点）：深交所大盘股代表。A股交易日09:30~15:00实时更新。09:30前显示昨收，开盘瞬间可能有较大跳变（隔夜信息+竞价结果）。数据源：新浪财经。" data-tip-for="CN-DI3">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="CN-DI4">
+            <div class="il">创业板指<span class="info-tip" data-desc="创业板指数（点）：追踪深交所创业板高成长公司。取值时间同深证成指。数据源：新浪财经。" data-tip-for="CN-DI4">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div></div>
+      <div class="ig cols-3">          <div class="ind" data-id="CN-DI5">
+            <div class="il">科创50<span class="info-tip" data-desc="科创50指数（点）：追踪上交所科创板50家公司。取值时间同深证成指。数据源：新浪财经。" data-tip-for="CN-DI5">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="CN-DI1">
+            <div class="il">沪深300<span class="info-tip" data-desc="沪深300指数（点）：A股大盘蓝筹基准。交易日09:30~15:00实时更新。09:30前显示昨收，开盘瞬间可能有跳变。数据源：新浪财经。" data-tip-for="CN-DI1">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="CN-DI2">
+            <div class="il">上证综指<span class="info-tip" data-desc="上证综合指数（点）：上交所全部股票。取值时间同沪深300。数据源：新浪财经。" data-tip-for="CN-DI2">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div></div>
+
+    </div></div>
+    <div class="right">
+    <div class="mkt" style="border-top:3px solid #8e44ad">
+      <div class="mh"><h2 style="color:#8e44ad;font-size:1.6rem">美股</h2><a href="dashboard_美股.html" class="ml">完整 &raquo;</a></div>
+      <div class="ig cols-3">          <div class="ind" data-id="US-001">
+            <div class="il">10Y美债(%)<span class="info-tip" data-desc="10Y美债收益率（%）：全球资产定价之锚。FRED每交易日美东约18:00更新当日收盘值。美东18:00=夏令时次日06:00北京/冬令时次日07:00北京。A股上午看到的实际是前一日值，这是因为FRED更新时间的时差，不是看板问题。数据源：FRED（DGS10）。" data-tip-for="US-001">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-003">
+            <div class="il">VIX<span class="info-tip" data-desc="VIX恐慌指数（点）：CBOE波动率指数，反映标普500未来30天隐含波动率。大于25意味市场恐慌。FRED日频数据（非实时），本看板每周二宏观时段拉取。显示的可能是数个交易日前的收盘值。如需盘中实时VIX请参考其他终端。数据源：FRED（VIXCLS）。" data-tip-for="US-003">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-004">
+            <div class="il">美元指数<span class="info-tip" data-desc="美元指数DXY（点）：ICE美元指数期货，几乎24小时交易。随看板刷新实时拉取，任何时候都是可查询的最新报价。DXY在周日美东18:00也有开盘价，不存在休市无数据的情况。数据源：新浪财经（DINIW）。" data-tip-for="US-004">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI1">
+            <div class="il">标普500(点)<span class="info-tip" data-desc="标普500指数（点）：美国大盘蓝筹基准指数。美股时段（夏令21:30~04:00/冬令22:30~05:00）每10分钟新浪实时采集。盘后显示当日收盘价。非交易时间不更新，显示最后收盘价。数据源：新浪财经。" data-tip-for="US-DI1">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI2">
+            <div class="il">纳斯达克(点)<span class="info-tip" data-desc="纳斯达克综合指数（点）：以科技股为主的美股指数。取值时间及更新方式同标普500。数据源：新浪财经。" data-tip-for="US-DI2">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI3">
+            <div class="il">WTI原油($)<span class="info-tip" data-desc="WTI原油期货（美元/桶）：在美股、A股、港股任意交易时段随看板刷新更新。非交易时段保留最新值。新闻看到的值是收盘价而非实时报价。数据源：新浪财经。" data-tip-for="US-DI3">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-006">
+            <div class="il">CPI同比(%)<span class="info-tip" data-desc="CPI同比（%）：美国CPI-U季调同比，衡量通胀水平。BLS每月中旬（约10-15日）美东8:30发布上月数据。本看板周二宏观时段拉取FRED。非发布月显示前月值，因CPI每月只发布一次。数据源：FRED（CPIAUCSL）。" data-tip-for="US-006">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-007">
+            <div class="il">联邦基金利率(%)<span class="info-tip" data-desc="联邦基金利率（%）：美联储政策目标利率。FRED每日更新但FOMC每6周才调整一次，非会议日数值完全相同。中间看到的数字不变恰恰说明政策没有调整，是正常的。数据源：FRED（FEDFUNDS）。" data-tip-for="US-007">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI4">
+            <div class="il">零售(亿美元)<span class="info-tip" data-desc="零售销售（亿美元，除汽车）：反映消费者支出。FRED月度指标，每月中旬发布上月值。每月仅在FRED更新后刷新一次，数值长期不变因发布频率就是每月一次。数据源：FRED（RSXFS）。" data-tip-for="US-DI4">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI5">
+            <div class="il">产能利用率(%)<span class="info-tip" data-desc="产能利用率（%）：美国全部工业部门产能利用率，反映经济景气。FRED月度数据每月中旬发布上月值。取值频率同上。数据源：FRED（CUMFNS）。" data-tip-for="US-DI5">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div>
+          <div class="ind" data-id="US-DI6">
+            <div class="il">消费者信心<span class="info-tip" data-desc="消费者信心：密歇根大学消费者信心指数。FRED月度数据，每月1-2次（初值月中、终值月末）。取值频率同零售销售。数据源：FRED（UMCSENT）。" data-tip-for="US-DI6">ⓘ</span></div>
+            <div class="iv loading">--</div>
+            <div class="ic">--</div>
+            <div class="dd">--</div>
+          </div></div>
+  <div class="nfp-box">
+    <div class="nfp-title">
+      <span>US 非农就业 (2026年5月)</span>
+      <span style="font-size:.72rem;color:#5a5a6e;font-weight:400">数据来源:FRED/BLS | 每月第1个周五(美东)更新</span>
+    </div>
+    <div class="nfp-grid">
+      <div class="nfp-item">
+        <span class="nfp-name">新增非农就业</span>
+        <span><span class="nfp-val" data-id="US-005">--</span><span class="nfp-month" data-month-id="US-005"></span></span>
+      </div>
+      <div class="nfp-item">
+        <span class="nfp-name">失业率(U3)</span>
+        <span><span class="nfp-val" data-id="US-NFP-01">--</span><span class="nfp-month" data-month-id="US-NFP-01"></span></span>
+      </div>
+      <div class="nfp-item">
+        <span class="nfp-name">平均时薪同比</span>
+        <span><span class="nfp-val" data-id="US-NFP-02">--</span><span class="nfp-month" data-month-id="US-NFP-02"></span></span>
+      </div>
+      <div class="nfp-item">
+        <span class="nfp-name">劳动参与率</span>
+        <span><span class="nfp-val" data-id="US-NFP-03">--</span><span class="nfp-month" data-month-id="US-NFP-03"></span></span>
+      </div>
+      <div class="nfp-item">
+        <span class="nfp-name">就业人口比</span>
+        <span><span class="nfp-val" data-id="US-NFP-04">--</span><span class="nfp-month" data-month-id="US-NFP-04"></span></span>
+      </div>
+      <div class="nfp-item">
+        <span class="nfp-name">U6失业率(宽口径)</span>
+        <span><span class="nfp-val" data-id="US-NFP-05">--</span><span class="nfp-month" data-month-id="US-NFP-05"></span></span>
+      </div>
+      <div class="nfp-item" style="grid-column:1/-1">
+        <span class="nfp-name">实际平均时薪(去通胀)</span>
+        <span><span class="nfp-val" data-id="US-NFP-06">--</span><span class="nfp-month" data-month-id="US-NFP-06"></span></span>
+      </div>
+    </div>
+  </div>
+    </div></div>
+  </div>
+  <div id="tip-box"><span class="tip-close" id="tip-close">&times;</span><span id="tip-text"></span></div>
+  <div class="footer">
+    数据来源：港交所、HKMA、美联储、BLS、东方财富等官方及公开渠道<br>
+    数据仅供参考，不构成投资建议 | IFA投研数据看板 v1.0
+  </div>
+</div>
+<script>
+const DATA_URL='dashboard_data.json?_t='+Date.now();
+let lastTs=0;
+async function load(){
+  try{
+    const r=await fetch(DATA_URL);
+    if(!r.ok)return;
+    const d=await r.json();
+    if(d.timestamp===lastTs)return;
+    lastTs=d.timestamp;
+    const t=document.getElementById('lastUpdate');
+    if(d.update_time)t.textContent=d.update_time;
+    const v=d.values||{};
+    const als=d.alerts||{};
+    document.querySelectorAll('.ind').forEach(el=>{
+      const id=el.dataset.id;
+      if(!id||!v[id])return;
+      const o=v[id],ve=el.querySelector('.iv'),ce=el.querySelector('.ic'),de=el.querySelector('.dd');
+      if(o.prev_close!==undefined){
+        // 南向资金三栏数据
+        ve.className='iv south-container';
+        var rtDetail=o.realtime_detail||'';
+        ve.innerHTML='<div class="south-row"><span class="south-label">上一交易日:</span><span class="south-val">'+o.prev_close+'</span></div>'
+          +'<div class="south-row"><span class="south-label">今日收盘:</span><span class="south-val">'+o.today_close+'</span></div>'
+          +'<div class="south-row"><span class="south-label">实时:</span><span class="south-val">'+o.realtime+'</span><span class="south-detail">'+rtDetail+'</span></div>';
+        if(de)de.textContent='';
+        ce.textContent='';
+      }else if(o.value!==undefined){
+        ve.textContent=o.value;ve.className='iv';
+        if(o.change!==undefined&&o.change!==null){
+          const c=parseFloat(o.change);
+          ce.textContent=(c>=0?'+':'')+c.toFixed(2)+(o.changeUnit||'%');
+          if(c>0){ve.classList.add('positive');ce.classList.add('positive');}else if(c<0){ve.classList.add('negative');ce.classList.add('negative');}
+        }
+        // 显示官方最后更新时间
+        if(o.data_time&&de)de.textContent='官方最后更新时间: '+o.data_time;
+        el.querySelectorAll('.al-badge').forEach(b=>b.remove());
+        if(als[id]){
+          for(let a of als[id]){
+            if(a.active){
+              const b=document.createElement('span');
+              b.className='al-badge al-'+a.level;
+              b.textContent=a.level==='red'?'!!!':(a.level==='orange'?'!!':'!');
+              b.title=a.desc;
+              el.appendChild(b);
+              break;
+            }
+          }
+        }
+      }
+    })
+    // 非农就业区块数据渲染
+    document.querySelectorAll('.nfp-val').forEach(el=>{
+      const id=el.dataset.id;
+      if(!id||!v[id])return;
+      const o=v[id];
+      let valText=o.value;
+      let unit=o.unit||'';
+      // 正数加+
+      if(o.change!==undefined&&o.change!==null){
+        const c=parseFloat(o.change);
+        if(c>0)el.style.color='#e74c3c';
+        else if(c<0)el.style.color='#27ae60';
+      }
+      el.textContent=valText+unit;
+      // 月份
+      const mo=document.querySelector('.nfp-month[data-month-id="'+id+'"]');
+      if(mo&&o.data_time)mo.textContent='('+o.data_time+')';
+    });
+  }catch(e){console.warn('load fail:',e)}
+}
+load();
+setInterval(load,120000);
+function tick(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})}
+tick();setInterval(tick,1000);
+// Tooltip: click-to-show (desktop + mobile)
+(function(){
+  const tip=document.getElementById('tip-box'),txt=document.getElementById('tip-text'),close=document.getElementById('tip-close');
+  document.querySelectorAll('.info-tip').forEach(el=>{
+    el.addEventListener('click',function(e){
+      e.stopPropagation();
+      const d=this.getAttribute('data-desc');
+      if(!d)return;
+      txt.textContent=d;
+      tip.classList.add('show');
+      tip.style.top=e.clientY+8+'px';tip.style.left=Math.min(e.clientX,tip.getBoundingClientRect().width?window.innerWidth-tip.offsetWidth-10:window.innerWidth*0.55)+'px';
+    });
+  });
+  close.addEventListener('click',function(e){e.stopPropagation();tip.classList.remove('show');});
+  document.addEventListener('click',function(e){if(!tip.contains(e.target))tip.classList.remove('show');});
+})();
+
+// ─── 审计状态加载 ───
+(function(){
+  const dot=document.getElementById('audit-dot');
+  if(!dot)return;
+  fetch('.audit_log.json').then(function(r){return r.json()}).then(function(d){
+    let list=Array.isArray(d)?d:[d];
+    let last=list[list.length-1]||{};
+    let state=last.state||'ok';
+    let warns=last.warnings||[];
+    if(state==='warn'&&warns.length){
+      dot.style.background='#e67e22';
+      dot.style.boxShadow='0 0 8px #e67e22';
+      dot.title=warns.length+'项异常';
+    }else{
+      dot.style.background='#27ae60';
+      dot.style.boxShadow='0 0 8px #27ae60';
+      dot.title='全部正常';
+    }
+  }).catch(function(){dot.style.display='none'});
+})();
+</script>
+<!-- 审计状态小圆点 -->
+<div id="audit-dot" onclick="window.open('data_update_log.html','_blank')" title="查看数据更新记录" style="position:fixed;bottom:16px;right:16px;z-index:999;cursor:pointer;width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.5);box-shadow:0 0 4px rgba(255,255,255,.3);transition:transform .15s;background:#27ae60" onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'"></div>
+</body>
+</html>

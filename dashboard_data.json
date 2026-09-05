@@ -1,0 +1,3140 @@
+{
+  "timestamp": 1788638402,
+  "update_time": "2026-09-06 04:00:02",
+  "version": "1.0.0",
+  "values": {
+    "HK-001": {
+      "value": 100.2,
+      "change": null,
+      "unit": "亿元",
+      "direction": "卖出",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 100.2,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 100.2,
+      "status": "休市"
+    },
+    "HK-002": {
+      "value": 2.224,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 2.224,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 2.224,
+      "status": "休市"
+    },
+    "HK-003": {
+      "value": 1.72,
+      "unit": "",
+      "change": null,
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 1.72,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1.72,
+      "status": "休市"
+    },
+    "HK-005": {
+      "value": 25515.74,
+      "change": 1.74,
+      "unit": "点",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 16:09:00",
+      "prev_value": 25515.74,
+      "last_valid": 25515.74,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "HK-DI1": {
+      "value": 4533.82,
+      "change": 2.27,
+      "unit": "点",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 16:08:00",
+      "prev_value": 4533.82,
+      "last_valid": 4533.82,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "HK-DI2": {
+      "value": 8481.28,
+      "change": 2.02,
+      "unit": "点",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 16:08:00",
+      "prev_value": 8481.28,
+      "last_valid": 8481.28,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-001": {
+      "value": 9382.6,
+      "change": null,
+      "unit": "亿元",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 9382.6,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 9382.6,
+      "status": "休市"
+    },
+    "CN-002": {
+      "value": 26482.2,
+      "change": null,
+      "unit": "亿元",
+      "data_time": "2026-09-04 15:30:18",
+      "data_date": "2026-09-04",
+      "last_valid": 26482.2,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 26482.2,
+      "status": "休市"
+    },
+    "CN-DI1": {
+      "value": 4548.05,
+      "change": -0.6,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 15:00:45",
+      "prev_value": 4548.05,
+      "last_valid": 4548.05,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-DI2": {
+      "value": 3930.12,
+      "change": -0.64,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 15:35:31",
+      "prev_value": 3930.12,
+      "last_valid": 3930.12,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-001": {
+      "value": 4.5,
+      "change": null,
+      "unit": "%",
+      "fred_date": "2026-05-26",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 4.5,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4.5,
+      "status": "休市"
+    },
+    "US-003": {
+      "value": 14.52,
+      "change": 1.47,
+      "unit": "",
+      "name": "VIX",
+      "data_time": "2026-09-06 04:00:02",
+      "prev_value": 14.52,
+      "last_valid": 14.52,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "data_date": "2026-09-06",
+      "status": "休市"
+    },
+    "US-004": {
+      "value": 99.155,
+      "change": 0.16,
+      "unit": "点",
+      "data_time": "2026-09-06 04:00:02",
+      "name": "美元指数(DXY)",
+      "prev_value": 99.155,
+      "last_valid": 99.155,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-005": {
+      "value": 17.2,
+      "unit": "万人",
+      "change": null,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "新增非农就业",
+      "prev_value": 17.2,
+      "last_valid": 17.2,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-006": {
+      "value": 3.95,
+      "change": null,
+      "unit": "%",
+      "name": "CPI-U(季调)",
+      "data_time": "2026-05-28 22:39:00",
+      "fred_date": "2026-04-01",
+      "prev_value": 3.95,
+      "last_valid": 3.95,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-007": {
+      "value": 3.64,
+      "change": null,
+      "unit": "%",
+      "name": "联邦基金利率",
+      "data_time": "2026-05-28 22:43:51",
+      "fred_date": "2026-04-01",
+      "prev_value": 3.64,
+      "last_valid": 3.64,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-DI1": {
+      "value": 7718.6,
+      "change": -0.38,
+      "unit": "点",
+      "name": "标普500",
+      "data_time": "2026-09-06 04:00:02",
+      "prev_value": 7718.6,
+      "last_valid": 7718.6,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "data_date": "2026-09-06",
+      "status": "休市"
+    },
+    "US-DI2": {
+      "value": 26506.99,
+      "change": -0.29,
+      "unit": "点",
+      "data_date": "2026-09-06",
+      "data_time": "2026-09-06 04:00:02",
+      "prev_value": 26506.99,
+      "last_valid": 26506.99,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-DI3": {
+      "value": 91.31,
+      "change": null,
+      "unit": "美元",
+      "data_time": "2026-09-06 04:00:02",
+      "data_date": "2026-09-06",
+      "last_valid": 91.31,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 91.31,
+      "status": "休市"
+    },
+    "US-DI4": {
+      "value": 6561.1,
+      "change": null,
+      "unit": "亿美元",
+      "name": "零售销售(除汽车)",
+      "data_time": "2026-05-28 22:43:51",
+      "fred_date": "2026-04-01",
+      "prev_value": 6561.1,
+      "last_valid": 6561.1,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-DI5": {
+      "value": 75.78,
+      "change": null,
+      "unit": "%",
+      "name": "产能利用率",
+      "data_time": "2026-05-28 22:43:51",
+      "fred_date": "2026-04-01",
+      "prev_value": 75.78,
+      "last_valid": 75.78,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-DI6": {
+      "value": 49.8,
+      "change": null,
+      "unit": "",
+      "name": "密歇根消费者信心",
+      "data_time": "2026-05-28 22:43:51",
+      "fred_date": "2026-04-01",
+      "prev_value": 49.8,
+      "last_valid": 49.8,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-DI3": {
+      "value": 13516.97,
+      "change": -1.52,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 15:00:03",
+      "prev_value": 13516.97,
+      "last_valid": 13516.97,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-DI4": {
+      "value": 3286.55,
+      "change": -1.74,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 15:00:03",
+      "prev_value": 3286.55,
+      "last_valid": 3286.55,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-DI5": {
+      "value": 1577.36,
+      "change": -3.11,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 15:35:43",
+      "prev_value": 1577.36,
+      "last_valid": 1577.36,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-004_cny": {
+      "value": 6.71,
+      "change": null,
+      "unit": "",
+      "data_date": "2026-09-06",
+      "data_time": "2026-09-05 02:56:38",
+      "prev_value": 6.71,
+      "last_valid": 6.71,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "HK-003_cny": {
+      "value": 0.86,
+      "change": null,
+      "unit": "",
+      "data_date": "2026-09-04",
+      "data_time": "2026-09-04 16:29:56",
+      "prev_value": 0.86,
+      "last_valid": 0.86,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "CN-003": {
+      "realtime": "-222.3",
+      "today_close": "-222.3",
+      "prev_close": "--",
+      "realtime_detail": "流出",
+      "unit": "亿元",
+      "direction": "流出",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "status": "休市"
+    },
+    "US-NFP-01": {
+      "value": 4.3,
+      "unit": "%",
+      "change": 0.0,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "失业率",
+      "last_valid": 4.3,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4.3,
+      "status": "休市"
+    },
+    "US-NFP-02": {
+      "value": 3.6,
+      "unit": "%",
+      "change": null,
+      "data_time": "2026-05-28 22:43:51",
+      "name": "平均时薪同比",
+      "_abs": 37.41,
+      "prev_value": 3.6,
+      "last_valid": 3.6,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "status": "休市"
+    },
+    "US-NFP-03": {
+      "value": 61.8,
+      "unit": "%",
+      "change": 0.0,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "劳动参与率",
+      "last_valid": 61.8,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 61.8,
+      "status": "休市"
+    },
+    "US-NFP-04": {
+      "value": 59.2,
+      "unit": "%",
+      "change": 0.1,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "就业人口比",
+      "last_valid": 59.2,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 59.2,
+      "status": "休市"
+    },
+    "US-NFP-05": {
+      "value": 8.1,
+      "unit": "%",
+      "change": -0.1,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "U6失业率(宽口径)",
+      "last_valid": 8.1,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 8.1,
+      "status": "休市"
+    },
+    "US-NFP-06": {
+      "value": 32.31,
+      "unit": "美元",
+      "change": 0.08,
+      "data_time": "2026-06-10 00:11:55",
+      "name": "实际平均时薪",
+      "last_valid": 32.31,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 32.31,
+      "status": "休市"
+    },
+    "HK-DI3": {
+      "value": 1.99,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 1.99,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1.99,
+      "status": "休市"
+    },
+    "HK-DI4": {
+      "value": 3.7,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 3.7,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 3.7,
+      "status": "休市"
+    },
+    "HK-DI5": {
+      "value": 843930.0,
+      "change": null,
+      "unit": "百万港元",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 843930.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 843930.0,
+      "status": "休市"
+    },
+    "HK-DI6": {
+      "value": 5.3,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 5.3,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 5.3,
+      "status": "休市"
+    },
+    "HK-DI7": {
+      "value": 72895.0,
+      "change": null,
+      "unit": "百万港元",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 72895.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 72895.0,
+      "status": "休市"
+    },
+    "HK-E01": {
+      "value": 1993.8,
+      "change": null,
+      "unit": "亿",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 1993.8,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1993.8,
+      "status": "休市"
+    },
+    "HK-E02": {
+      "value": 141.35,
+      "change": null,
+      "unit": "亿股",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 141.35,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 141.35,
+      "status": "休市"
+    },
+    "HK-E03": {
+      "value": 17.12,
+      "change": null,
+      "unit": "",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 17.12,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 17.12,
+      "status": "休市"
+    },
+    "HK-E04": {
+      "value": 6715.46,
+      "change": null,
+      "unit": "",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 6715.46,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 6715.46,
+      "status": "休市"
+    },
+    "HK-E05": {
+      "value": 4229.94,
+      "change": null,
+      "unit": "",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": 4229.94,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4229.94,
+      "status": "休市"
+    },
+    "HK-E06": {
+      "value": {
+        "ON": 2.2238,
+        "1W": 2.6,
+        "2W": 2.632,
+        "1Y": 3.5545
+      },
+      "change": null,
+      "unit": "%",
+      "type": "curve",
+      "data_time": "2026-09-04 16:30:36",
+      "data_date": "2026-09-04",
+      "last_valid": {
+        "ON": 2.2238,
+        "1W": 2.6,
+        "2W": 2.632,
+        "1Y": 3.5545
+      },
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": {
+        "ON": 2.2238,
+        "1W": 2.6,
+        "2W": 2.632,
+        "1Y": 3.5545
+      },
+      "status": "休市"
+    },
+    "CN-M02": {
+      "value": 53.0,
+      "change": null,
+      "unit": "",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 53.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 53.0,
+      "status": "休市"
+    },
+    "CN-M03": {
+      "value": 5.0,
+      "change": null,
+      "unit": "%",
+      "abs": 334192.9,
+      "_quarter": "2026年第1季度",
+      "_sub_tpl": "同比:5.0% | 334,193亿",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 5.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 5.0,
+      "status": "休市"
+    },
+    "CN-M04": {
+      "value": 22075.0,
+      "change": null,
+      "unit": "亿元",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 22075.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 22075.0,
+      "status": "休市"
+    },
+    "CN-R01": {
+      "value": 1.72,
+      "change": null,
+      "unit": "%",
+      "data_date": "2026-05-28",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 1.72,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1.72,
+      "status": "休市"
+    },
+    "CN-R02": {
+      "value": 1.23,
+      "change": null,
+      "unit": "%",
+      "data_date": "2026-05-28",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 1.23,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1.23,
+      "status": "休市"
+    },
+    "CN-R03": {
+      "value": 0.49,
+      "change": null,
+      "unit": "%",
+      "data_date": "2026-05-28",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 0.49,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 0.49,
+      "status": "休市"
+    },
+    "CN-R04": {
+      "value": 3.0,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 3.0,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 3.0,
+      "status": "休市"
+    },
+    "CN-R05": {
+      "value": 3.5,
+      "change": null,
+      "unit": "%",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 3.5,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 3.5,
+      "status": "休市"
+    },
+    "CN-R06": {
+      "value": 6.776,
+      "change": null,
+      "unit": "",
+      "data_date": "2026-05-28",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 6.776,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 6.776,
+      "status": "休市"
+    },
+    "CN-M01": {
+      "value": 1.2,
+      "change": null,
+      "unit": "%",
+      "data_date": "2026-05-28",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 1.2,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 1.2,
+      "status": "休市"
+    },
+    "US-001_2y": {
+      "value": 4.01,
+      "change": null,
+      "unit": "%",
+      "fred_date": "2026-05-26",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 4.01,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4.01,
+      "status": "休市"
+    },
+    "US-001_spr": {
+      "value": 0.48,
+      "change": null,
+      "unit": "%",
+      "fred_date": "2026-05-27",
+      "data_time": "2026-05-28 22:43:51",
+      "data_date": "2026-05-28",
+      "last_valid": 0.48,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 0.48,
+      "status": "休市"
+    },
+    "US-006_core": {
+      "value": 335.423,
+      "change": 0.38,
+      "changeUnit": "%",
+      "unit": "",
+      "fred_date": "2026-04-01",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 335.423,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 335.423,
+      "status": "休市"
+    },
+    "US-005_une": {
+      "value": 4.3,
+      "change": null,
+      "unit": "%",
+      "fred_date": "2026-04-01",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 4.3,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4.3,
+      "status": "休市"
+    },
+    "US-DI7": {
+      "value": 2.53,
+      "change": null,
+      "unit": "%",
+      "fred_date": "2026-05-27",
+      "data_time": "2026-05-28 22:43:51",
+      "last_valid": 2.53,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 2.53,
+      "status": "休市"
+    },
+    "US-004_gold": {
+      "value": 4430.96,
+      "change": null,
+      "unit": "美元",
+      "data_time": "2026-09-06 04:00:02",
+      "data_date": "2026-09-06",
+      "last_valid": 4430.96,
+      "last_valid_time": "2026-09-06 04:00:02",
+      "prev_value": 4430.96,
+      "status": "休市"
+    }
+  },
+  "alerts": {
+    "HK-001": [
+      {
+        "type": "value_above",
+        "threshold": 100,
+        "level": "orange",
+        "desc": "南下资金单日净流入超100亿",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": -80,
+        "level": "orange",
+        "desc": "南下资金单日净流出超80亿",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 100,
+        "level": "orange",
+        "desc": "南下资金单日净流入超100亿",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": -80,
+        "level": "orange",
+        "desc": "南下资金单日净流出超80亿",
+        "active": false
+      }
+    ],
+    "HK-002": [
+      {
+        "type": "value_above",
+        "threshold": 5.0,
+        "level": "red",
+        "desc": "Hibor隔夜>5%，流动性紧张",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 5.0,
+        "level": "red",
+        "desc": "Hibor隔夜>5%，流动性紧张",
+        "active": false
+      }
+    ],
+    "HK-003": [
+      {
+        "type": "value_above",
+        "threshold": 7.82,
+        "level": "yellow",
+        "desc": "港元接近弱方兑换保证7.85",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": 7.78,
+        "level": "yellow",
+        "desc": "港元接近强方兑换保证7.75",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 7.82,
+        "level": "yellow",
+        "desc": "港元接近弱方兑换保证7.85",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": 7.78,
+        "level": "yellow",
+        "desc": "港元接近强方兑换保证7.75",
+        "active": false
+      }
+    ],
+    "HK-005": [
+      {
+        "type": "change_below",
+        "threshold": -2.0,
+        "level": "yellow",
+        "desc": "恒生指数跌超2%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -4.0,
+        "level": "red",
+        "desc": "恒生指数暴跌超4%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -2.0,
+        "level": "yellow",
+        "desc": "恒生指数跌超2%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -4.0,
+        "level": "red",
+        "desc": "恒生指数暴跌超4%",
+        "active": false
+      }
+    ],
+    "HK-DI1": [
+      {
+        "type": "change_below",
+        "threshold": -3.0,
+        "level": "yellow",
+        "desc": "恒生科技跌超3%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -3.0,
+        "level": "yellow",
+        "desc": "恒生科技跌超3%",
+        "active": false
+      }
+    ],
+    "CN-001": [
+      {
+        "type": "value_above",
+        "threshold": 100,
+        "level": "orange",
+        "desc": "北上资金单日净流入超100亿",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": -80,
+        "level": "orange",
+        "desc": "北上资金单日净流出超80亿",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 100,
+        "level": "orange",
+        "desc": "北上资金单日净流入超100亿",
+        "active": false
+      },
+      {
+        "type": "value_below",
+        "threshold": -80,
+        "level": "orange",
+        "desc": "北上资金单日净流出超80亿",
+        "active": false
+      }
+    ],
+    "US-001": [
+      {
+        "type": "change_above",
+        "threshold": 0.1,
+        "level": "yellow",
+        "desc": "10Y美债单日波动超10bp",
+        "active": false
+      },
+      {
+        "type": "change_above",
+        "threshold": 0.1,
+        "level": "yellow",
+        "desc": "10Y美债单日波动超10bp",
+        "active": false
+      }
+    ],
+    "US-003": [
+      {
+        "type": "value_above",
+        "threshold": 25,
+        "level": "yellow",
+        "desc": "VIX>25，波动偏高",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 35,
+        "level": "red",
+        "desc": "VIX>35，市场恐慌",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 25,
+        "level": "yellow",
+        "desc": "VIX>25，波动偏高",
+        "active": false
+      },
+      {
+        "type": "value_above",
+        "threshold": 35,
+        "level": "red",
+        "desc": "VIX>35，市场恐慌",
+        "active": false
+      }
+    ],
+    "US-005": [
+      {
+        "type": "change_above",
+        "threshold": 10,
+        "level": "yellow",
+        "desc": "非农就业超预期10万",
+        "active": false
+      },
+      {
+        "type": "change_above",
+        "threshold": 10,
+        "level": "yellow",
+        "desc": "非农就业超预期10万",
+        "active": false
+      }
+    ],
+    "US-007": [
+      {
+        "type": "change_above",
+        "threshold": 0.25,
+        "level": "red",
+        "desc": "联邦基金利率变动25bp",
+        "active": false
+      },
+      {
+        "type": "change_above",
+        "threshold": 0.25,
+        "level": "red",
+        "desc": "联邦基金利率变动25bp",
+        "active": false
+      }
+    ],
+    "US-DI1": [
+      {
+        "type": "change_below",
+        "threshold": -2.0,
+        "level": "yellow",
+        "desc": "标普500跌超2%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -4.0,
+        "level": "red",
+        "desc": "标普500暴跌超4%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -2.0,
+        "level": "yellow",
+        "desc": "标普500跌超2%",
+        "active": false
+      },
+      {
+        "type": "change_below",
+        "threshold": -4.0,
+        "level": "red",
+        "desc": "标普500暴跌超4%",
+        "active": false
+      }
+    ]
+  },
+  "hk_chart": {
+    "hsi": [
+      {
+        "date": "2026-06-11",
+        "close": 24249.29
+      },
+      {
+        "date": "2026-06-12",
+        "close": 24718.1
+      },
+      {
+        "date": "2026-06-15",
+        "close": 24842.67
+      },
+      {
+        "date": "2026-06-16",
+        "close": 24493.95
+      },
+      {
+        "date": "2026-06-17",
+        "close": 24312.16
+      },
+      {
+        "date": "2026-06-18",
+        "close": 23924.81
+      },
+      {
+        "date": "2026-06-22",
+        "close": 23768.52
+      },
+      {
+        "date": "2026-06-23",
+        "close": 23336.28
+      },
+      {
+        "date": "2026-06-24",
+        "close": 23412.18
+      },
+      {
+        "date": "2026-06-25",
+        "close": 23076.91
+      },
+      {
+        "date": "2026-06-26",
+        "close": 22671.86
+      },
+      {
+        "date": "2026-06-29",
+        "close": 23026.68
+      },
+      {
+        "date": "2026-06-30",
+        "close": 22881.02
+      },
+      {
+        "date": "2026-07-02",
+        "close": 23055.03
+      },
+      {
+        "date": "2026-07-03",
+        "close": 23350.03
+      },
+      {
+        "date": "2026-07-06",
+        "close": 23616.32
+      },
+      {
+        "date": "2026-07-07",
+        "close": 23496.89
+      },
+      {
+        "date": "2026-07-08",
+        "close": 24199.46
+      },
+      {
+        "date": "2026-07-09",
+        "close": 24030.18
+      },
+      {
+        "date": "2026-07-10",
+        "close": 24175.12
+      },
+      {
+        "date": "2026-07-13",
+        "close": 24213.72
+      },
+      {
+        "date": "2026-07-14",
+        "close": 24340.73
+      },
+      {
+        "date": "2026-07-15",
+        "close": 24681.1
+      },
+      {
+        "date": "2026-07-16",
+        "close": 25008.6
+      },
+      {
+        "date": "2026-07-17",
+        "close": 24562.24
+      },
+      {
+        "date": "2026-07-20",
+        "close": 25143.05
+      },
+      {
+        "date": "2026-07-21",
+        "close": 25132.29
+      },
+      {
+        "date": "2026-07-22",
+        "close": 24892.66
+      },
+      {
+        "date": "2026-07-23",
+        "close": 25210.81
+      },
+      {
+        "date": "2026-07-24",
+        "close": 24963.23
+      },
+      {
+        "date": "2026-07-27",
+        "close": 25207.18
+      },
+      {
+        "date": "2026-07-28",
+        "close": 25310.85
+      },
+      {
+        "date": "2026-07-29",
+        "close": 25807.92
+      },
+      {
+        "date": "2026-07-30",
+        "close": 25858.88
+      },
+      {
+        "date": "2026-07-31",
+        "close": 25884.43
+      },
+      {
+        "date": "2026-08-03",
+        "close": 26009.4
+      },
+      {
+        "date": "2026-08-04",
+        "close": 25852.92
+      },
+      {
+        "date": "2026-08-05",
+        "close": 25915.82
+      },
+      {
+        "date": "2026-08-06",
+        "close": 25530.28
+      },
+      {
+        "date": "2026-08-07",
+        "close": 25668.03
+      },
+      {
+        "date": "2026-08-10",
+        "close": 25937.49
+      },
+      {
+        "date": "2026-08-11",
+        "close": 25652.82
+      },
+      {
+        "date": "2026-08-12",
+        "close": 25440.17
+      },
+      {
+        "date": "2026-08-13",
+        "close": 25396.51
+      },
+      {
+        "date": "2026-08-14",
+        "close": 25116.85
+      },
+      {
+        "date": "2026-08-17",
+        "close": 25453.23
+      },
+      {
+        "date": "2026-08-18",
+        "close": 25471.15
+      },
+      {
+        "date": "2026-08-19",
+        "close": 25495.07
+      },
+      {
+        "date": "2026-08-20",
+        "close": 25698.49
+      },
+      {
+        "date": "2026-08-21",
+        "close": 26009.46
+      },
+      {
+        "date": "2026-08-24",
+        "close": 25517.33
+      },
+      {
+        "date": "2026-08-25",
+        "close": 25511.1
+      },
+      {
+        "date": "2026-08-26",
+        "close": 25652.97
+      },
+      {
+        "date": "2026-08-27",
+        "close": 25565.74
+      },
+      {
+        "date": "2026-08-28",
+        "close": 25584.79
+      },
+      {
+        "date": "2026-08-31",
+        "close": 25566.99
+      },
+      {
+        "date": "2026-09-01",
+        "close": 25329.73
+      },
+      {
+        "date": "2026-09-02",
+        "close": 25311.21
+      },
+      {
+        "date": "2026-09-03",
+        "close": 25213.31
+      },
+      {
+        "date": "2026-09-04",
+        "close": 25650.87
+      }
+    ],
+    "hstech": [
+      {
+        "date": "2026-06-11",
+        "close": 4655.74
+      },
+      {
+        "date": "2026-06-12",
+        "close": 4705.2
+      },
+      {
+        "date": "2026-06-15",
+        "close": 4765.58
+      },
+      {
+        "date": "2026-06-16",
+        "close": 4658.65
+      },
+      {
+        "date": "2026-06-17",
+        "close": 4669.07
+      },
+      {
+        "date": "2026-06-18",
+        "close": 4604.35
+      },
+      {
+        "date": "2026-06-22",
+        "close": 4549.41
+      },
+      {
+        "date": "2026-06-23",
+        "close": 4399.22
+      },
+      {
+        "date": "2026-06-24",
+        "close": 4479.02
+      },
+      {
+        "date": "2026-06-25",
+        "close": 4405.92
+      },
+      {
+        "date": "2026-06-26",
+        "close": 4255.59
+      },
+      {
+        "date": "2026-06-29",
+        "close": 4393.01
+      },
+      {
+        "date": "2026-06-30",
+        "close": 4472.23
+      },
+      {
+        "date": "2026-07-02",
+        "close": 4454.28
+      },
+      {
+        "date": "2026-07-03",
+        "close": 4499.0
+      },
+      {
+        "date": "2026-07-06",
+        "close": 4541.23
+      },
+      {
+        "date": "2026-07-07",
+        "close": 4507.04
+      },
+      {
+        "date": "2026-07-08",
+        "close": 4731.02
+      },
+      {
+        "date": "2026-07-09",
+        "close": 4731.56
+      },
+      {
+        "date": "2026-07-10",
+        "close": 4721.66
+      },
+      {
+        "date": "2026-07-13",
+        "close": 4676.43
+      },
+      {
+        "date": "2026-07-14",
+        "close": 4679.46
+      },
+      {
+        "date": "2026-07-15",
+        "close": 4740.49
+      },
+      {
+        "date": "2026-07-16",
+        "close": 4834.44
+      },
+      {
+        "date": "2026-07-17",
+        "close": 4623.17
+      },
+      {
+        "date": "2026-07-20",
+        "close": 4752.15
+      },
+      {
+        "date": "2026-07-21",
+        "close": 4814.83
+      },
+      {
+        "date": "2026-07-22",
+        "close": 4668.23
+      },
+      {
+        "date": "2026-07-23",
+        "close": 4698.48
+      },
+      {
+        "date": "2026-07-24",
+        "close": 4629.51
+      },
+      {
+        "date": "2026-07-27",
+        "close": 4702.05
+      },
+      {
+        "date": "2026-07-28",
+        "close": 4730.61
+      },
+      {
+        "date": "2026-07-29",
+        "close": 4864.73
+      },
+      {
+        "date": "2026-07-30",
+        "close": 4803.77
+      },
+      {
+        "date": "2026-07-31",
+        "close": 4829.22
+      },
+      {
+        "date": "2026-08-03",
+        "close": 4875.61
+      },
+      {
+        "date": "2026-08-04",
+        "close": 4885.61
+      },
+      {
+        "date": "2026-08-05",
+        "close": 4933.07
+      },
+      {
+        "date": "2026-08-06",
+        "close": 4820.78
+      },
+      {
+        "date": "2026-08-07",
+        "close": 4858.29
+      },
+      {
+        "date": "2026-08-10",
+        "close": 4919.46
+      },
+      {
+        "date": "2026-08-11",
+        "close": 4824.42
+      },
+      {
+        "date": "2026-08-12",
+        "close": 4776.44
+      },
+      {
+        "date": "2026-08-13",
+        "close": 4792.39
+      },
+      {
+        "date": "2026-08-14",
+        "close": 4707.62
+      },
+      {
+        "date": "2026-08-17",
+        "close": 4782.03
+      },
+      {
+        "date": "2026-08-18",
+        "close": 4739.18
+      },
+      {
+        "date": "2026-08-19",
+        "close": 4682.05
+      },
+      {
+        "date": "2026-08-20",
+        "close": 4700.53
+      },
+      {
+        "date": "2026-08-21",
+        "close": 4766.16
+      },
+      {
+        "date": "2026-08-24",
+        "close": 4594.04
+      },
+      {
+        "date": "2026-08-25",
+        "close": 4588.54
+      },
+      {
+        "date": "2026-08-26",
+        "close": 4626.15
+      },
+      {
+        "date": "2026-08-27",
+        "close": 4620.29
+      },
+      {
+        "date": "2026-08-28",
+        "close": 4605.15
+      },
+      {
+        "date": "2026-08-31",
+        "close": 4619.87
+      },
+      {
+        "date": "2026-09-01",
+        "close": 4550.88
+      },
+      {
+        "date": "2026-09-02",
+        "close": 4517.16
+      },
+      {
+        "date": "2026-09-03",
+        "close": 4468.48
+      },
+      {
+        "date": "2026-09-04",
+        "close": 4569.8
+      }
+    ],
+    "south": [
+      {
+        "date": "2026-06-11",
+        "net": -27.5,
+        "accum": 5.4076
+      },
+      {
+        "date": "2026-06-12",
+        "net": -39.4,
+        "accum": 5.4036
+      },
+      {
+        "date": "2026-06-15",
+        "net": 21.1,
+        "accum": 5.4057
+      },
+      {
+        "date": "2026-06-16",
+        "net": 34.6,
+        "accum": 5.4092
+      },
+      {
+        "date": "2026-06-17",
+        "net": -32.2,
+        "accum": 5.406
+      },
+      {
+        "date": "2026-06-18",
+        "net": -67.9,
+        "accum": 5.3992
+      },
+      {
+        "date": "2026-06-22",
+        "net": -58.2,
+        "accum": 5.3934
+      },
+      {
+        "date": "2026-06-23",
+        "net": 103.7,
+        "accum": 5.4037
+      },
+      {
+        "date": "2026-06-24",
+        "net": 157.5,
+        "accum": 5.4195
+      },
+      {
+        "date": "2026-06-25",
+        "net": -88.7,
+        "accum": 5.4106
+      },
+      {
+        "date": "2026-06-26",
+        "net": -25.0,
+        "accum": 5.4081
+      },
+      {
+        "date": "2026-06-29",
+        "net": -103.4,
+        "accum": 5.3978
+      },
+      {
+        "date": "2026-06-30",
+        "net": 59.0,
+        "accum": 5.4037
+      },
+      {
+        "date": "2026-07-02",
+        "net": -19.7,
+        "accum": 5.4017
+      },
+      {
+        "date": "2026-07-03",
+        "net": 45.4,
+        "accum": 5.4062
+      },
+      {
+        "date": "2026-07-06",
+        "net": 205.3,
+        "accum": 5.4268
+      },
+      {
+        "date": "2026-07-07",
+        "net": 5.0,
+        "accum": 5.4273
+      },
+      {
+        "date": "2026-07-08",
+        "net": 141.9,
+        "accum": 5.4415
+      },
+      {
+        "date": "2026-07-09",
+        "net": 98.3,
+        "accum": 5.4513
+      },
+      {
+        "date": "2026-07-10",
+        "net": -59.9,
+        "accum": 5.4453
+      },
+      {
+        "date": "2026-07-13",
+        "net": 90.4,
+        "accum": 5.4543
+      },
+      {
+        "date": "2026-07-14",
+        "net": 110.0,
+        "accum": 5.4653
+      },
+      {
+        "date": "2026-07-15",
+        "net": 133.6,
+        "accum": 5.4787
+      },
+      {
+        "date": "2026-07-16",
+        "net": 50.4,
+        "accum": 5.4837
+      },
+      {
+        "date": "2026-07-17",
+        "net": -14.6,
+        "accum": 5.4823
+      },
+      {
+        "date": "2026-07-20",
+        "net": -59.6,
+        "accum": 5.4763
+      },
+      {
+        "date": "2026-07-21",
+        "net": 71.7,
+        "accum": 5.4835
+      },
+      {
+        "date": "2026-07-22",
+        "net": 75.2,
+        "accum": 5.491
+      },
+      {
+        "date": "2026-07-23",
+        "net": -42.3,
+        "accum": 5.4868
+      },
+      {
+        "date": "2026-07-24",
+        "net": -15.2,
+        "accum": 5.4853
+      },
+      {
+        "date": "2026-07-27",
+        "net": -15.7,
+        "accum": 5.4837
+      },
+      {
+        "date": "2026-07-28",
+        "net": -24.9,
+        "accum": 5.4812
+      },
+      {
+        "date": "2026-07-29",
+        "net": -55.9,
+        "accum": 5.4756
+      },
+      {
+        "date": "2026-07-30",
+        "net": -85.7,
+        "accum": 5.467
+      },
+      {
+        "date": "2026-07-31",
+        "net": -4.8,
+        "accum": 5.4665
+      },
+      {
+        "date": "2026-08-03",
+        "net": 110.3,
+        "accum": 5.4776
+      },
+      {
+        "date": "2026-08-04",
+        "net": 25.7,
+        "accum": 5.4801
+      },
+      {
+        "date": "2026-08-05",
+        "net": -14.0,
+        "accum": 5.4787
+      },
+      {
+        "date": "2026-08-06",
+        "net": -14.6,
+        "accum": 5.4773
+      },
+      {
+        "date": "2026-08-07",
+        "net": -7.8,
+        "accum": 5.4765
+      },
+      {
+        "date": "2026-08-10",
+        "net": 20.2,
+        "accum": 5.4785
+      },
+      {
+        "date": "2026-08-11",
+        "net": -13.8,
+        "accum": 5.4772
+      },
+      {
+        "date": "2026-08-12",
+        "net": -29.1,
+        "accum": 5.4742
+      },
+      {
+        "date": "2026-08-13",
+        "net": 36.7,
+        "accum": 5.4779
+      },
+      {
+        "date": "2026-08-14",
+        "net": -13.2,
+        "accum": 5.4766
+      },
+      {
+        "date": "2026-08-17",
+        "net": 30.8,
+        "accum": 5.4797
+      },
+      {
+        "date": "2026-08-18",
+        "net": 140.0,
+        "accum": 5.4937
+      },
+      {
+        "date": "2026-08-19",
+        "net": -106.2,
+        "accum": 5.4831
+      },
+      {
+        "date": "2026-08-20",
+        "net": -104.1,
+        "accum": 5.4726
+      },
+      {
+        "date": "2026-08-21",
+        "net": -76.3,
+        "accum": 5.465
+      },
+      {
+        "date": "2026-08-24",
+        "net": 115.7,
+        "accum": 5.4766
+      },
+      {
+        "date": "2026-08-25",
+        "net": -66.1,
+        "accum": 5.47
+      },
+      {
+        "date": "2026-08-26",
+        "net": 4.5,
+        "accum": 5.4704
+      },
+      {
+        "date": "2026-08-27",
+        "net": 31.8,
+        "accum": 5.4736
+      },
+      {
+        "date": "2026-08-28",
+        "net": 11.8,
+        "accum": 5.4748
+      },
+      {
+        "date": "2026-08-31",
+        "net": 21.4,
+        "accum": 5.4769
+      },
+      {
+        "date": "2026-09-01",
+        "net": 77.6,
+        "accum": 5.4847
+      },
+      {
+        "date": "2026-09-02",
+        "net": 40.9,
+        "accum": 5.4888
+      },
+      {
+        "date": "2026-09-03",
+        "net": 34.0,
+        "accum": 5.4922
+      },
+      {
+        "date": "2026-09-04",
+        "net": -100.2,
+        "accum": 5.4821
+      }
+    ]
+  },
+  "meta": {
+    "HK-005": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=hkHSI",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "香港交易所",
+      "desc": "恒生指数实时点位"
+    },
+    "HK-DI1": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=hkHSTECH",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "香港交易所",
+      "desc": "恒生科技指数实时点位"
+    },
+    "HK-DI2": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=hkHSCEI",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "香港交易所",
+      "desc": "国企指数实时点位"
+    },
+    "HK-DI3": {
+      "source": "akshare (亿牛网 eniu.com)",
+      "source_url": "https://eniu.com/gu/hk01093/roe",
+      "update_freq": "每日更新（港股收盘后）",
+      "data_provider": "亿牛网(聚合数据)",
+      "desc": "恒生指数股息率（最新交易日）",
+      "lag_note": "数据通常T+1更新"
+    },
+    "HK-001": {
+      "source": "东方财富数据API(港股通实时)",
+      "source_url": "https://data.eastmoney.com/gxg/hkstock.html",
+      "update_freq": "交易日实时更新（约5秒刷新）",
+      "data_provider": "港交所+沪深交易所",
+      "desc": "南向资金（沪港通+深港通）实时净买入"
+    },
+    "HK-E01": {
+      "source": "新浪财经港股日线 (stock_hk_index_daily_sina)",
+      "source_url": "https://stock.finance.sina.com.cn/hkstock/quotes/CES100.html",
+      "update_freq": "每日更新（港股收盘后）",
+      "data_provider": "香港交易所",
+      "desc": "港股主板成交额（从恒指日线提取）",
+      "lag_note": "T日数据约在T日16:30后可用"
+    },
+    "HK-E02": {
+      "source": "新浪财经港股日线 (stock_hk_index_daily_sina)",
+      "source_url": "https://stock.finance.sina.com.cn/hkstock/quotes/CES100.html",
+      "update_freq": "每日更新（港股收盘后）",
+      "data_provider": "香港交易所",
+      "desc": "港股主板成交量（股数，从恒指日线提取）",
+      "lag_note": "T日数据约在T日16:30后可用"
+    },
+    "HK-E03": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=hkVHSI",
+      "update_freq": "交易时段实时更新",
+      "data_provider": "恒生指数有限公司",
+      "desc": "恒指波幅指数 VHSI（类似VIX，衡量恒指期权引申波幅）",
+      "lag_note": "实时计算，交易时段持续更新"
+    },
+    "HK-002": {
+      "source": "东方财富数据API (HIBOR隔夜)",
+      "source_url": "https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_IMP_INTRESTRATEN",
+      "update_freq": "每个交易日更新（约11:00 香港时间）",
+      "data_provider": "香港银行公会",
+      "desc": "香港银行同业拆借利率（隔夜）",
+      "lag_note": "T日约11:00公布"
+    },
+    "HK-E06": {
+      "source": "akshare (金十数据 jin10.com)",
+      "source_url": "https://datacenter.jin10.com/reportType/dc_hk_market_info",
+      "update_freq": "每个交易日更新",
+      "data_provider": "香港银行公会",
+      "desc": "Hibor利率期限结构：ON/1W/1M/3M/6M/1Y",
+      "lag_note": "T日约11:00公布"
+    },
+    "HK-003": {
+      "source": "新浪财经实时汇率",
+      "source_url": "https://hq.sinajs.cn/list=hkHKDCNY",
+      "update_freq": "交易日实时更新",
+      "data_provider": "中国外汇交易中心",
+      "desc": "港元兑人民币（CNY）汇率",
+      "lag_note": "实时更新，人民币中间价每日9:15公布"
+    },
+    "HK-DI4": {
+      "source": "akshare (东方财富-香港失业率)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_5.html",
+      "update_freq": "每月更新（约次月20日）",
+      "data_provider": "香港政府统计处",
+      "desc": "香港失业率（经季节调整）",
+      "lag_note": "数据滞后约一个月"
+    },
+    "HK-DI5": {
+      "source": "akshare (东方财富-香港GDP)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_0.html",
+      "update_freq": "每季度更新（约季后2个月）",
+      "data_provider": "香港政府统计处",
+      "desc": "香港本地生产总值（以当时市价计算）",
+      "lag_note": "数据滞后约一个季度"
+    },
+    "HK-DI6": {
+      "source": "akshare (东方财富-香港GDP同比)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_1.html",
+      "update_freq": "每季度更新（约季后2个月）",
+      "data_provider": "香港政府统计处",
+      "desc": "香港本地生产总值同比增速",
+      "lag_note": "数据滞后约一个季度"
+    },
+    "HK-DI7": {
+      "source": "akshare (东方财富-楼宇买卖合约金额)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_6.html",
+      "update_freq": "每月更新（约次月首周）",
+      "data_provider": "香港土地注册处",
+      "desc": "香港楼宇买卖合约总金额",
+      "lag_note": "数据滞后约一个月"
+    },
+    "hk_chart": {
+      "source": "新浪财经港股日线 (stock_hk_index_daily_sina)",
+      "source_url": "https://stock.finance.sina.com.cn/hkstock/quotes/CES100.html",
+      "update_freq": "每日更新（港股收盘后更新日线数据）",
+      "data_provider": "香港交易所",
+      "desc": "恒生指数+恒生科技指数近60日收盘价走势",
+      "lag_note": "T日数据约T日18:00后可用"
+    },
+    "CN-DI1": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=sh000300",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "中证指数有限公司",
+      "desc": "沪深300指数实时点位"
+    },
+    "CN-DI2": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=sh000001",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "上海证券交易所",
+      "desc": "上证综指实时点位"
+    },
+    "CN-DI3": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=sz399001",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "深圳证券交易所",
+      "desc": "深证成指实时点位"
+    },
+    "CN-DI4": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=sz399006",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "深圳证券交易所",
+      "desc": "创业板指实时点位"
+    },
+    "CN-DI5": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=sh000688",
+      "update_freq": "交易日实时更新（每秒）",
+      "data_provider": "上海证券交易所",
+      "desc": "科创50指数实时点位"
+    },
+    "CN-001": {
+      "source": "新浪财经实时行情（沪+深成交额）",
+      "source_url": "https://hq.sinajs.cn/list=sh000001",
+      "update_freq": "交易日实时更新",
+      "data_provider": "沪深交易所",
+      "desc": "A股成交额（沪市+深市当日累计成交额）"
+    },
+    "CN-002": {
+      "source": "akshare (东方财富-融资融券)",
+      "source_url": "https://data.eastmoney.com/rzrq/total.html",
+      "update_freq": "每日更新（约T日22:00后）",
+      "data_provider": "沪深交易所",
+      "desc": "沪深两市融资融券余额合计",
+      "lag_note": "T日数据约T+1日开盘前可用"
+    },
+    "CN-003": {
+      "source": "东方财富数据API(沪深港通实时)",
+      "source_url": "https://data.eastmoney.com/hsgt/index.html",
+      "update_freq": "交易日实时更新（约5秒刷新）",
+      "data_provider": "港交所+沪深交易所",
+      "desc": "北向资金（沪股通+深股通）实时净买入"
+    },
+    "CN-R01": {
+      "source": "akshare (bond_zh_us_rate)",
+      "source_url": "https://www.zhihuijiaoyi.com/bond",
+      "update_freq": "每个交易日更新（约17:00后）",
+      "data_provider": "中国外汇交易中心",
+      "desc": "中国10年期国债到期收益率",
+      "lag_note": "T日数据约17:00左右公布"
+    },
+    "CN-R02": {
+      "source": "akshare (bond_zh_us_rate)",
+      "source_url": "https://www.zhihuijiaoyi.com/bond",
+      "update_freq": "每个交易日更新（约17:00后）",
+      "data_provider": "中国外汇交易中心",
+      "desc": "中国2年期国债到期收益率",
+      "lag_note": "T日数据约17:00左右公布"
+    },
+    "CN-R03": {
+      "source": "计算（10Y国债-2Y国债）",
+      "source_url": "",
+      "update_freq": "每个交易日更新",
+      "data_provider": "中国外汇交易中心",
+      "desc": "国债利差=10年期-2年期收益率"
+    },
+    "CN-R04": {
+      "source": "akshare (macro_china_lpr)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_2.html",
+      "update_freq": "每月20日更新（节假日顺延）",
+      "data_provider": "中国人民银行",
+      "desc": "LPR 1年期贷款市场报价利率",
+      "lag_note": "通常在每月20日9:30公布"
+    },
+    "CN-R05": {
+      "source": "akshare (macro_china_lpr)",
+      "source_url": "https://data.eastmoney.com/cjsj/foreign_8_2.html",
+      "update_freq": "每月20日更新（节假日顺延）",
+      "data_provider": "中国人民银行",
+      "desc": "LPR 5年期贷款市场报价利率",
+      "lag_note": "通常在每月20日9:30公布"
+    },
+    "CN-R06": {
+      "source": "akshare (currency_boc_safe - 中国银行汇率)",
+      "source_url": "https://www.boc.cn/sourcedb/whpj/",
+      "update_freq": "每个交易日更新（约9:15后）",
+      "data_provider": "中国外汇交易中心",
+      "desc": "美元兑人民币（CNY）中间价",
+      "lag_note": "每日9:15由中国外汇交易中心公布"
+    },
+    "CN-M01": {
+      "source": "akshare (macro_china_cpi_monthly)",
+      "source_url": "https://data.eastmoney.com/cjsj/cpi.html",
+      "update_freq": "每月更新（约次月9日）",
+      "data_provider": "国家统计局",
+      "desc": "居民消费价格指数同比变化",
+      "lag_note": "数据滞后约一个月"
+    },
+    "CN-M02": {
+      "source": "akshare (macro_china_pmi)",
+      "source_url": "https://data.eastmoney.com/cjsj/hgpm.html",
+      "update_freq": "每月更新（约当月最后一天）",
+      "data_provider": "国家统计局",
+      "desc": "制造业采购经理指数",
+      "lag_note": "当月最后一天或次月初公布"
+    },
+    "CN-M03": {
+      "source": "akshare (macro_china_gdp)",
+      "source_url": "https://data.eastmoney.com/cjsj/hgdp.html",
+      "update_freq": "每季度更新（约季后20天）",
+      "data_provider": "国家统计局",
+      "desc": "国内生产总值同比增速",
+      "lag_note": "数据滞后约一个季度"
+    },
+    "CN-M04": {
+      "source": "akshare (macro_china_shrzgm)",
+      "source_url": "https://data.eastmoney.com/cjsj/hshrz.html",
+      "update_freq": "每月更新（约次月10-15日）",
+      "data_provider": "中国人民银行",
+      "desc": "社会融资规模月度增量",
+      "lag_note": "数据滞后约一个月"
+    },
+    "cn_chart": {
+      "source": "akshare (东方财富-沪深300日线)",
+      "source_url": "https://quote.eastmoney.com/center/boardlist.html",
+      "update_freq": "每日更新（沪深收盘后）",
+      "data_provider": "中证指数有限公司",
+      "desc": "沪深300指数近60日收盘价走势",
+      "lag_note": "T日数据约T日18:00后可用"
+    },
+    "US-001": {
+      "source": "FRED DGS10",
+      "source_url": "https://fred.stlouisfed.org/series/DGS10",
+      "update_freq": "每个交易日更新（约美东18:00）",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "10年期美国国债到期收益率",
+      "lag_note": "T日数据约T日美东18:00后可用"
+    },
+    "US-001_2y": {
+      "source": "FRED DGS2",
+      "source_url": "https://fred.stlouisfed.org/series/DGS2",
+      "update_freq": "每个交易日更新",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "2年期美国国债到期收益率"
+    },
+    "US-001_spr": {
+      "source": "FRED T10Y2Y",
+      "source_url": "https://fred.stlouisfed.org/series/T10Y2Y",
+      "update_freq": "每个交易日更新",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "美债10年期与2年期收益率利差（正值=陡峭，负值=倒挂）"
+    },
+    "US-003": {
+      "source": "新浪财经实时行情",
+      "source_url": "https://hq.sinajs.cn/list=gb_$inx",
+      "update_freq": "交易日实时更新",
+      "data_provider": "CBOE",
+      "desc": "VIX恐慌指数（标普500隐含波动率）"
+    },
+    "US-007": {
+      "source": "FRED FEDFUNDS",
+      "source_url": "https://fred.stlouisfed.org/series/FEDFUNDS",
+      "update_freq": "每次FOMC会议后更新",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "联邦基金目标利率",
+      "lag_note": "月频数据，最新为当月值"
+    },
+    "US-006": {
+      "source": "FRED CPIAUCSL",
+      "source_url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+      "update_freq": "每月更新（约次月10-15日）",
+      "data_provider": "美国劳工统计局(BLS)",
+      "desc": "美国CPI-U消费者价格指数（季调）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-006_core": {
+      "source": "FRED CPILFESL",
+      "source_url": "https://fred.stlouisfed.org/series/CPILFESL",
+      "update_freq": "每月更新",
+      "data_provider": "美国劳工统计局(BLS)",
+      "desc": "美国核心CPI（除食品和能源）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-005": {
+      "source": "FRED PAYEMS",
+      "source_url": "https://fred.stlouisfed.org/series/PAYEMS",
+      "update_freq": "每月更新（约次月第一个周五）",
+      "data_provider": "美国劳工统计局(BLS)",
+      "desc": "美国非农就业人数（新增）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-005_une": {
+      "source": "FRED UNRATE",
+      "source_url": "https://fred.stlouisfed.org/series/UNRATE",
+      "update_freq": "每月更新（约次月第一个周五）",
+      "data_provider": "美国劳工统计局(BLS)",
+      "desc": "美国失业率（U3失业率，季节调整）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-DI4": {
+      "source": "FRED RSXFS",
+      "source_url": "https://fred.stlouisfed.org/series/RSXFS",
+      "update_freq": "每月更新（约次月中）",
+      "data_provider": "美国商务部",
+      "desc": "美国零售销售（除汽车，月频）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-DI5": {
+      "source": "FRED CUMFNS",
+      "source_url": "https://fred.stlouisfed.org/series/CUMFNS",
+      "update_freq": "每月更新（约次月15-17日）",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "美国产能利用率（制造业+公用事业）",
+      "lag_note": "最新为月度数据"
+    },
+    "US-DI6": {
+      "source": "FRED UMCSENT",
+      "source_url": "https://fred.stlouisfed.org/series/UMCSENT",
+      "update_freq": "每月更新（约次月第二个周五）",
+      "data_provider": "密歇根大学",
+      "desc": "美国密歇根大学消费者信心指数",
+      "lag_note": "最新为月度数据"
+    },
+    "US-004": {
+      "source": "新浪财经DINIW实时行情",
+      "source_url": "https://hq.sinajs.cn/list=DINIW",
+      "update_freq": "交易日实时更新",
+      "data_provider": "ICE",
+      "desc": "美元指数 DXY（美元兑6种主要货币加权汇率）"
+    },
+    "US-004_gold": {
+      "source": "新浪财经国际期货",
+      "source_url": "https://hq.sinajs.cn/list=hf_GC",
+      "update_freq": "交易日实时更新",
+      "data_provider": "COMEX",
+      "desc": "COMEX黄金期货主力合约价格"
+    },
+    "US-DI3": {
+      "source": "新浪财经国际期货",
+      "source_url": "https://hq.sinajs.cn/list=hf_CL",
+      "update_freq": "交易日实时更新",
+      "data_provider": "NYMEX",
+      "desc": "WTI原油期货主力合约价格"
+    },
+    "US-008": {
+      "source": "akshare (stock_us_daily)",
+      "source_url": "https://finance.yahoo.com/quote/SPY",
+      "update_freq": "每日更新（美股收盘后）",
+      "data_provider": "Yahoo Finance via akshare",
+      "desc": "标普500指数ETF(SPY)近60日收盘价",
+      "lag_note": "T日数据约T日美东18:00后可用"
+    },
+    "US-009": {
+      "source": "akshare (stock_us_daily)",
+      "source_url": "https://finance.yahoo.com/quote/QQQ",
+      "update_freq": "每日更新（美股收盘后）",
+      "data_provider": "Yahoo Finance via akshare",
+      "desc": "纳斯达克100指数ETF(QQQ)近60日收盘价",
+      "lag_note": "T日数据约T日美东18:00后可用"
+    },
+    "US-DI7": {
+      "source": "FRED T5YIE",
+      "source_url": "https://fred.stlouisfed.org/series/T5YIE",
+      "update_freq": "每个交易日更新",
+      "data_provider": "美联储(Federal Reserve)",
+      "desc": "美国5年期盈亏平衡通胀率（TIPS隐含通胀预期）"
+    }
+  },
+  "cn_chart": {
+    "hs300": [
+      {
+        "date": "2026-06-12",
+        "close": 4777.32
+      },
+      {
+        "date": "2026-06-15",
+        "close": 4891.71
+      },
+      {
+        "date": "2026-06-16",
+        "close": 4884.23
+      },
+      {
+        "date": "2026-06-17",
+        "close": 4931.39
+      },
+      {
+        "date": "2026-06-18",
+        "close": 4941.6
+      },
+      {
+        "date": "2026-06-22",
+        "close": 5059.66
+      },
+      {
+        "date": "2026-06-23",
+        "close": 4919.39
+      },
+      {
+        "date": "2026-06-24",
+        "close": 4943.02
+      },
+      {
+        "date": "2026-06-25",
+        "close": 5020.1
+      },
+      {
+        "date": "2026-06-26",
+        "close": 4868.22
+      },
+      {
+        "date": "2026-06-29",
+        "close": 4926.92
+      },
+      {
+        "date": "2026-06-30",
+        "close": 4979.43
+      },
+      {
+        "date": "2026-07-01",
+        "close": 4958.98
+      },
+      {
+        "date": "2026-07-02",
+        "close": 4812.3
+      },
+      {
+        "date": "2026-07-03",
+        "close": 4842.17
+      },
+      {
+        "date": "2026-07-06",
+        "close": 4842.0
+      },
+      {
+        "date": "2026-07-07",
+        "close": 4792.26
+      },
+      {
+        "date": "2026-07-08",
+        "close": 4755.53
+      },
+      {
+        "date": "2026-07-09",
+        "close": 4876.31
+      },
+      {
+        "date": "2026-07-10",
+        "close": 4780.79
+      },
+      {
+        "date": "2026-07-13",
+        "close": 4695.38
+      },
+      {
+        "date": "2026-07-14",
+        "close": 4796.5
+      },
+      {
+        "date": "2026-07-15",
+        "close": 4786.78
+      },
+      {
+        "date": "2026-07-16",
+        "close": 4698.44
+      },
+      {
+        "date": "2026-07-17",
+        "close": 4529.1
+      },
+      {
+        "date": "2026-07-20",
+        "close": 4598.32
+      },
+      {
+        "date": "2026-07-21",
+        "close": 4739.23
+      },
+      {
+        "date": "2026-07-22",
+        "close": 4717.24
+      },
+      {
+        "date": "2026-07-23",
+        "close": 4728.0
+      },
+      {
+        "date": "2026-07-24",
+        "close": 4649.19
+      },
+      {
+        "date": "2026-07-27",
+        "close": 4702.43
+      },
+      {
+        "date": "2026-07-28",
+        "close": 4569.52
+      },
+      {
+        "date": "2026-07-29",
+        "close": 4600.26
+      },
+      {
+        "date": "2026-07-30",
+        "close": 4549.72
+      },
+      {
+        "date": "2026-07-31",
+        "close": 4588.2
+      },
+      {
+        "date": "2026-08-03",
+        "close": 4543.18
+      },
+      {
+        "date": "2026-08-04",
+        "close": 4600.93
+      },
+      {
+        "date": "2026-08-05",
+        "close": 4658.15
+      },
+      {
+        "date": "2026-08-06",
+        "close": 4651.31
+      },
+      {
+        "date": "2026-08-07",
+        "close": 4694.44
+      },
+      {
+        "date": "2026-08-10",
+        "close": 4702.02
+      },
+      {
+        "date": "2026-08-11",
+        "close": 4663.79
+      },
+      {
+        "date": "2026-08-12",
+        "close": 4690.92
+      },
+      {
+        "date": "2026-08-13",
+        "close": 4663.95
+      },
+      {
+        "date": "2026-08-14",
+        "close": 4665.88
+      },
+      {
+        "date": "2026-08-17",
+        "close": 4741.1
+      },
+      {
+        "date": "2026-08-18",
+        "close": 4725.81
+      },
+      {
+        "date": "2026-08-19",
+        "close": 4588.69
+      },
+      {
+        "date": "2026-08-20",
+        "close": 4592.75
+      },
+      {
+        "date": "2026-08-21",
+        "close": 4618.9
+      },
+      {
+        "date": "2026-08-24",
+        "close": 4563.13
+      },
+      {
+        "date": "2026-08-25",
+        "close": 4552.03
+      },
+      {
+        "date": "2026-08-26",
+        "close": 4590.79
+      },
+      {
+        "date": "2026-08-27",
+        "close": 4630.28
+      },
+      {
+        "date": "2026-08-28",
+        "close": 4609.18
+      },
+      {
+        "date": "2026-08-31",
+        "close": 4625.09
+      },
+      {
+        "date": "2026-09-01",
+        "close": 4611.44
+      },
+      {
+        "date": "2026-09-02",
+        "close": 4547.96
+      },
+      {
+        "date": "2026-09-03",
+        "close": 4552.58
+      },
+      {
+        "date": "2026-09-04",
+        "close": 4548.05
+      }
+    ],
+    "north": [
+      {
+        "date": "2026-06-15",
+        "net": 239.5
+      },
+      {
+        "date": "2026-06-16",
+        "net": -116.3
+      },
+      {
+        "date": "2026-06-17",
+        "net": -63.04
+      },
+      {
+        "date": "2026-06-18",
+        "net": -267.7
+      },
+      {
+        "date": "2026-06-19",
+        "net": -267.7
+      },
+      {
+        "date": "2026-06-22",
+        "net": -1.5
+      },
+      {
+        "date": "2026-06-23",
+        "net": -63.04
+      },
+      {
+        "date": "2026-06-24",
+        "net": 100.1
+      },
+      {
+        "date": "2026-06-25",
+        "net": -63.04
+      },
+      {
+        "date": "2026-06-26",
+        "net": -807.8
+      },
+      {
+        "date": "2026-06-29",
+        "net": -155.9
+      },
+      {
+        "date": "2026-06-30",
+        "net": 7.8
+      },
+      {
+        "date": "2026-07-01",
+        "net": -63.04
+      },
+      {
+        "date": "2026-07-02",
+        "net": -63.04
+      },
+      {
+        "date": "2026-07-03",
+        "net": -117.4
+      },
+      {
+        "date": "2026-07-06",
+        "net": -63.04
+      },
+      {
+        "date": "2026-07-07",
+        "net": -400.0
+      },
+      {
+        "date": "2026-07-08",
+        "net": -239.4
+      },
+      {
+        "date": "2026-07-09",
+        "net": 88.5
+      },
+      {
+        "date": "2026-07-10",
+        "net": -214.9
+      },
+      {
+        "date": "2026-07-13",
+        "net": -777.9
+      },
+      {
+        "date": "2026-07-14",
+        "net": -11.6
+      },
+      {
+        "date": "2026-07-15",
+        "net": -291.2
+      },
+      {
+        "date": "2026-07-16",
+        "net": -475.2
+      },
+      {
+        "date": "2026-07-17",
+        "net": -676.5
+      },
+      {
+        "date": "2026-07-20",
+        "net": -221.9
+      },
+      {
+        "date": "2026-07-21",
+        "net": 106.9
+      },
+      {
+        "date": "2026-07-22",
+        "net": -29.6
+      },
+      {
+        "date": "2026-07-23",
+        "net": -94.7
+      },
+      {
+        "date": "2026-07-24",
+        "net": -387.1
+      },
+      {
+        "date": "2026-07-27",
+        "net": 752.5
+      },
+      {
+        "date": "2026-07-28",
+        "net": -436.9
+      },
+      {
+        "date": "2026-07-29",
+        "net": -48.4
+      },
+      {
+        "date": "2026-07-30",
+        "net": -227.2
+      },
+      {
+        "date": "2026-07-31",
+        "net": 236.0
+      },
+      {
+        "date": "2026-08-03",
+        "net": -197.5
+      },
+      {
+        "date": "2026-08-04",
+        "net": 124.1
+      },
+      {
+        "date": "2026-08-05",
+        "net": 297.2
+      },
+      {
+        "date": "2026-08-06",
+        "net": -113.1
+      },
+      {
+        "date": "2026-08-07",
+        "net": 201.7
+      },
+      {
+        "date": "2026-08-10",
+        "net": -136.5
+      },
+      {
+        "date": "2026-08-11",
+        "net": -249.7
+      },
+      {
+        "date": "2026-08-12",
+        "net": 52.1
+      },
+      {
+        "date": "2026-08-13",
+        "net": -198.2
+      },
+      {
+        "date": "2026-08-14",
+        "net": -56.3
+      },
+      {
+        "date": "2026-08-17",
+        "net": 222.0
+      },
+      {
+        "date": "2026-08-18",
+        "net": -242.8
+      },
+      {
+        "date": "2026-08-19",
+        "net": -332.5
+      },
+      {
+        "date": "2026-08-20",
+        "net": -45.2
+      },
+      {
+        "date": "2026-08-21",
+        "net": -2.0
+      },
+      {
+        "date": "2026-08-24",
+        "net": -354.5
+      },
+      {
+        "date": "2026-08-25",
+        "net": -354.5
+      },
+      {
+        "date": "2026-08-26",
+        "net": 90.4
+      },
+      {
+        "date": "2026-08-27",
+        "net": 95.6
+      },
+      {
+        "date": "2026-08-28",
+        "net": 249.9
+      },
+      {
+        "date": "2026-08-31",
+        "net": -95.5
+      },
+      {
+        "date": "2026-09-01",
+        "net": -98.6
+      },
+      {
+        "date": "2026-09-02",
+        "net": -201.1
+      },
+      {
+        "date": "2026-09-03",
+        "net": -25.9
+      },
+      {
+        "date": "2026-09-04",
+        "net": -222.3
+      }
+    ]
+  },
+  "us_chart": {
+    "spy": [
+      {
+        "date": "2026-06-11",
+        "close": 737.76
+      },
+      {
+        "date": "2026-06-12",
+        "close": 741.75
+      },
+      {
+        "date": "2026-06-15",
+        "close": 754.83
+      },
+      {
+        "date": "2026-06-16",
+        "close": 750.33
+      },
+      {
+        "date": "2026-06-17",
+        "close": 740.96
+      },
+      {
+        "date": "2026-06-18",
+        "close": 746.74
+      },
+      {
+        "date": "2026-06-22",
+        "close": 744.39
+      },
+      {
+        "date": "2026-06-23",
+        "close": 733.58
+      },
+      {
+        "date": "2026-06-24",
+        "close": 733.24
+      },
+      {
+        "date": "2026-06-25",
+        "close": 734.3
+      },
+      {
+        "date": "2026-06-26",
+        "close": 728.99
+      },
+      {
+        "date": "2026-06-29",
+        "close": 741.0
+      },
+      {
+        "date": "2026-06-30",
+        "close": 746.77
+      },
+      {
+        "date": "2026-07-01",
+        "close": 745.76
+      },
+      {
+        "date": "2026-07-02",
+        "close": 744.78
+      },
+      {
+        "date": "2026-07-06",
+        "close": 751.28
+      },
+      {
+        "date": "2026-07-07",
+        "close": 747.71
+      },
+      {
+        "date": "2026-07-08",
+        "close": 745.4
+      },
+      {
+        "date": "2026-07-09",
+        "close": 751.71
+      },
+      {
+        "date": "2026-07-10",
+        "close": 754.95
+      },
+      {
+        "date": "2026-07-13",
+        "close": 749.17
+      },
+      {
+        "date": "2026-07-14",
+        "close": 751.83
+      },
+      {
+        "date": "2026-07-15",
+        "close": 754.81
+      },
+      {
+        "date": "2026-07-16",
+        "close": 750.72
+      },
+      {
+        "date": "2026-07-17",
+        "close": 743.29
+      },
+      {
+        "date": "2026-07-20",
+        "close": 742.09
+      },
+      {
+        "date": "2026-07-21",
+        "close": 748.28
+      },
+      {
+        "date": "2026-07-22",
+        "close": 747.41
+      },
+      {
+        "date": "2026-07-23",
+        "close": 738.18
+      },
+      {
+        "date": "2026-07-24",
+        "close": 738.93
+      },
+      {
+        "date": "2026-07-27",
+        "close": 739.09
+      },
+      {
+        "date": "2026-07-28",
+        "close": 740.86
+      },
+      {
+        "date": "2026-07-29",
+        "close": 729.46
+      },
+      {
+        "date": "2026-07-30",
+        "close": 741.69
+      },
+      {
+        "date": "2026-07-31",
+        "close": 747.03
+      },
+      {
+        "date": "2026-08-03",
+        "close": 757.67
+      },
+      {
+        "date": "2026-08-04",
+        "close": 771.33
+      },
+      {
+        "date": "2026-08-05",
+        "close": 769.79
+      },
+      {
+        "date": "2026-08-06",
+        "close": 768.56
+      },
+      {
+        "date": "2026-08-07",
+        "close": 773.26
+      },
+      {
+        "date": "2026-08-10",
+        "close": 773.03
+      },
+      {
+        "date": "2026-08-11",
+        "close": 770.56
+      },
+      {
+        "date": "2026-08-12",
+        "close": 772.49
+      },
+      {
+        "date": "2026-08-13",
+        "close": 777.88
+      },
+      {
+        "date": "2026-08-14",
+        "close": 776.34
+      },
+      {
+        "date": "2026-08-17",
+        "close": 772.67
+      },
+      {
+        "date": "2026-08-18",
+        "close": 767.45
+      },
+      {
+        "date": "2026-08-19",
+        "close": 769.06
+      },
+      {
+        "date": "2026-08-20",
+        "close": 762.6
+      },
+      {
+        "date": "2026-08-21",
+        "close": 765.72
+      },
+      {
+        "date": "2026-08-24",
+        "close": 763.47
+      },
+      {
+        "date": "2026-08-25",
+        "close": 765.91
+      },
+      {
+        "date": "2026-08-26",
+        "close": 766.08
+      },
+      {
+        "date": "2026-08-27",
+        "close": 771.1
+      },
+      {
+        "date": "2026-08-28",
+        "close": 769.35
+      },
+      {
+        "date": "2026-08-31",
+        "close": 767.05
+      },
+      {
+        "date": "2026-09-01",
+        "close": 761.78
+      },
+      {
+        "date": "2026-09-02",
+        "close": 765.16
+      },
+      {
+        "date": "2026-09-03",
+        "close": 773.17
+      },
+      {
+        "date": "2026-09-04",
+        "close": 770.19
+      }
+    ],
+    "qqq": [
+      {
+        "date": "2026-06-11",
+        "close": 717.12
+      },
+      {
+        "date": "2026-06-12",
+        "close": 721.34
+      },
+      {
+        "date": "2026-06-15",
+        "close": 744.0
+      },
+      {
+        "date": "2026-06-16",
+        "close": 729.86
+      },
+      {
+        "date": "2026-06-17",
+        "close": 722.51
+      },
+      {
+        "date": "2026-06-18",
+        "close": 740.62
+      },
+      {
+        "date": "2026-06-22",
+        "close": 737.95
+      },
+      {
+        "date": "2026-06-23",
+        "close": 713.65
+      },
+      {
+        "date": "2026-06-24",
+        "close": 710.62
+      },
+      {
+        "date": "2026-06-25",
+        "close": 716.38
+      },
+      {
+        "date": "2026-06-26",
+        "close": 706.52
+      },
+      {
+        "date": "2026-06-29",
+        "close": 724.08
+      },
+      {
+        "date": "2026-06-30",
+        "close": 736.4
+      },
+      {
+        "date": "2026-07-01",
+        "close": 725.17
+      },
+      {
+        "date": "2026-07-02",
+        "close": 712.6
+      },
+      {
+        "date": "2026-07-06",
+        "close": 722.82
+      },
+      {
+        "date": "2026-07-07",
+        "close": 709.43
+      },
+      {
+        "date": "2026-07-08",
+        "close": 711.44
+      },
+      {
+        "date": "2026-07-09",
+        "close": 723.28
+      },
+      {
+        "date": "2026-07-10",
+        "close": 725.51
+      },
+      {
+        "date": "2026-07-13",
+        "close": 711.74
+      },
+      {
+        "date": "2026-07-14",
+        "close": 719.69
+      },
+      {
+        "date": "2026-07-15",
+        "close": 717.74
+      },
+      {
+        "date": "2026-07-16",
+        "close": 705.94
+      },
+      {
+        "date": "2026-07-17",
+        "close": 695.33
+      },
+      {
+        "date": "2026-07-20",
+        "close": 696.06
+      },
+      {
+        "date": "2026-07-21",
+        "close": 708.97
+      },
+      {
+        "date": "2026-07-22",
+        "close": 705.35
+      },
+      {
+        "date": "2026-07-23",
+        "close": 691.96
+      },
+      {
+        "date": "2026-07-24",
+        "close": 684.23
+      },
+      {
+        "date": "2026-07-27",
+        "close": 682.12
+      },
+      {
+        "date": "2026-07-28",
+        "close": 675.49
+      },
+      {
+        "date": "2026-07-29",
+        "close": 661.73
+      },
+      {
+        "date": "2026-07-30",
+        "close": 683.55
+      },
+      {
+        "date": "2026-07-31",
+        "close": 687.99
+      },
+      {
+        "date": "2026-08-03",
+        "close": 700.07
+      },
+      {
+        "date": "2026-08-04",
+        "close": 723.85
+      },
+      {
+        "date": "2026-08-05",
+        "close": 717.3
+      },
+      {
+        "date": "2026-08-06",
+        "close": 714.65
+      },
+      {
+        "date": "2026-08-07",
+        "close": 723.03
+      },
+      {
+        "date": "2026-08-10",
+        "close": 720.87
+      },
+      {
+        "date": "2026-08-11",
+        "close": 718.45
+      },
+      {
+        "date": "2026-08-12",
+        "close": 723.7
+      },
+      {
+        "date": "2026-08-13",
+        "close": 732.07
+      },
+      {
+        "date": "2026-08-14",
+        "close": 731.07
+      },
+      {
+        "date": "2026-08-17",
+        "close": 729.87
+      },
+      {
+        "date": "2026-08-18",
+        "close": 717.51
+      },
+      {
+        "date": "2026-08-19",
+        "close": 716.08
+      },
+      {
+        "date": "2026-08-20",
+        "close": 710.93
+      },
+      {
+        "date": "2026-08-21",
+        "close": 713.44
+      },
+      {
+        "date": "2026-08-24",
+        "close": 706.32
+      },
+      {
+        "date": "2026-08-25",
+        "close": 710.72
+      },
+      {
+        "date": "2026-08-26",
+        "close": 711.37
+      },
+      {
+        "date": "2026-08-27",
+        "close": 721.11
+      },
+      {
+        "date": "2026-08-28",
+        "close": 716.43
+      },
+      {
+        "date": "2026-08-31",
+        "close": 716.76
+      },
+      {
+        "date": "2026-09-01",
+        "close": 707.64
+      },
+      {
+        "date": "2026-09-02",
+        "close": 709.24
+      },
+      {
+        "date": "2026-09-03",
+        "close": 717.67
+      },
+      {
+        "date": "2026-09-04",
+        "close": 718.96
+      }
+    ]
+  },
+  "last_edited": "2026-07-06 16:31"
+}
