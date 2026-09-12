@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>重点人物历史言论</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC',sans-serif;background:#0d1117;color:#e6edf3;padding:20px;max-width:1000px;margin:auto}
+.entry{padding:10px 16px;margin-bottom:0;border-bottom:1px solid #21262d}
+.entry:last-child{border-bottom:none}
+.entry:hover{border-radius:4px}
+.back{margin-bottom:16px}
+.back a{color:#58a6ff;text-decoration:none;font-size:14px}
+.back a:hover{text-decoration:underline}
+h1{font-size:28px;margin-bottom:12px;color:#f0f6fc;font-weight:700}
+.subtitle{font-size:13px;color:#8b949e;margin-bottom:20px}
+.notice{background:#161b22;border-left:4px solid #1f6feb;padding:12px 16px;font-size:12px;color:#8b949e;border-radius:0 8px 8px 0;margin-bottom:20px;line-height:1.6}
+.notice strong{color:#e6edf3}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.people-tab{padding:8px 16px;background:#161b22;border:1px solid #30363d;border-radius:20px;cursor:pointer;font-size:14px;color:#8b949e;transition:all .2s;user-select:none}
+.people-tab:hover{border-color:#58a6ff;color:#58a6ff}
+.people-tab.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
+.people-tab .count{opacity:.7;margin-left:4px}
+.entry-list{display:flex;flex-direction:column;gap:6px}
+.entry{background:#161b22;border-radius:8px;padding:12px 16px;border:1px solid #30363d;transition:border-color .2s}
+.entry:hover{border-color:#484f58}
+.entry-text{font-size:13px;line-height:1.8;color:#f0f6fc;word-break:break-word;padding:2px 0}
+.entry-index{color:#8b949e;font-weight:500;font-size:12px;margin-right:4px}
+.date{color:#58a6ff;font-weight:600}
+.date.date-unknown{color:#d29922;font-weight:600}
+.person{color:#ff7b72;font-weight:600;font-size:13px}
+.occasion{color:#7ee787;font-weight:500}
+.quote{color:#e6edf3}
+.meta{color:#84c1ff;font-size:11px;display:inline-block;margin-left:8px}
+.empty-state{text-align:center;padding:60px 20px;color:#484f58;font-size:14px}
+.footer-stats{text-align:center;font-size:11px;color:#484f58;margin-top:14px;padding-top:10px;border-top:1px solid #21262d}
+.bg{color:#8b949e;font-size:12px;margin-top:4px;padding:4px 8px;background:#0d1117;border-radius:4px;line-height:1.5;border-left:2px solid #30363d}
+.article-badge{display:inline-block;background:#238636;color:#fff;padding:0 6px;border-radius:3px;font-size:10px;font-weight:500;margin-right:6px}
+.article-title{color:#f0f6fc;font-weight:500}
+.extra-quote{font-size:13px;color:#e6edf3;line-height:1.7;padding:4px 0;border-bottom:1px solid #21262d}
+.extra-quote:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+
+<div class="back"><a href="index.html">&larr; 返回看板</a></div>
+<h1>📋 重点人物历史言论</h1>
+
+<div class="notice">
+  <span><strong>当前收录时间范围：</strong>2025.01.01--2026.06.11</span>
+  <span id="lastEdited" style="float:right;color:#484f58">最后编辑：--</span>
+</div>
+
+<div class="tabs" id="peopleTabs"></div>
+<div class="entry-list" id="entryList"></div>
+<div class="empty-state" id="loadingState" style="text-align:center;padding:60px 20px;color:#484f58;font-size:14px;">正在加载数据...</div>
+
+<script>
+(function(){
+  var EN = {'瑞·达利欧':'Ray Dalio'};
+
+  function esc(v){ return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,' '); }
+
+  function toNum(d){
+    if(!d) return 0;
+    var m = d.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日/);
+    if(m) return +(''+m[1]+ (+m[2]<10?'0'+m[2]:m[2]) + (+m[3]<10?'0'+m[3]:m[3]));
+    var m2 = d.match(/^(\d{4})年(\d{1,2})月/);
+    if(m2) return +(''+m2[1]+ (+m2[2]<10?'0'+m2[2]:m2[2]) +'00');
+    var iso = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if(iso) return +(''+iso[1]+iso[2]+iso[3]);
+    return 0;
+  }
+
+  function fmtDate(d){
+    if(!d||d==='--'||d==='') return '--';
+    var m = d.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日/);
+    if(m) return m[1]+'\u5e74'+ (+m[2])+'\u6708'+ (+m[3])+'\u65e5';
+    var m2 = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if(m2) return m2[1]+'\u5e74'+ (+m2[2])+'\u6708'+ (+m2[3])+'\u65e5';
+    return d;
+  }
+
+  function render(entries, pName){
+    var list = document.getElementById('entryList');
+    var loading = document.getElementById('loadingState');
+    if(loading) loading.style.display='none';
+    if(!entries||entries.length===0){
+      list.innerHTML = '<div class="empty-state">\u6682\u65e0\u6570\u636e</div>';
+      return;
+    }
+
+    var sorted = entries.slice().sort(function(a,b){return toNum(b.date)-toNum(a.date);});
+
+    list.innerHTML = sorted.map(function(e,idx){
+      var d = fmtDate(e.date)||'--';
+      var o = e.occasion||'\u516c\u5f00\u573a\u5408';
+      var bg = esc(e.background||'');
+      var en = EN[pName]||'';
+      var pn = esc(pName)+(en?' ('+en+')':'');
+      var eq = e.extra_quotes||[];
+      var tq = e.total_quotes||1;
+      var isArticle = (e.type==='article');
+
+      var h = '';
+      h += '<div class="entry">';
+      h += '<div class="entry-text">';
+      h += '<span class="entry-index">'+(idx+1)+'.</span> ';
+                        if(isArticle){
+        // Article badge (green) + date + person
+        h += '<span class="date">'+esc(d)+'</span>';
+        h += ' | <span class="person">'+pn+'</span>';
+        h += ' | ';
+        h += '<span class="article-badge">文章</span> <span class="article-title">'+esc(e.content||'')+'</span>';
+        h += '</div>';
+        // English title as background info
+        if(e.background){
+          h += '<div class="bg" style="margin-top:4px">🏷 '+esc(e.background)+'</div>';
+        }
+        // Source
+        if(e.source){
+          h += '<div class="meta" style="margin-top:4px">来源：<a href="'+esc(e.source_url||'#')+'" target="_blank" style="color:#84c1ff;text-decoration:none">'+esc(e.source)+'</a></div>';
+        }
+        // Article content folded - display as bilingual or plain quotes
+        if(eq&&eq.length){
+          h += '<div id="ab'+idx+'" style="display:none;margin-top:8px;padding:10px 12px;background:#0d1117;border-radius:6px;border-left:3px solid #238636;max-height:600px;overflow-y:auto">';
+          eq.forEach(function(q,i){
+            if(q.constructor === Array && q.length >= 2){
+              h += '<div class="bilingual-block" style="margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #21262d">';
+              h += '<div class="bilingual-en" style="color:#e6edf3;font-size:13px;line-height:1.6;margin-bottom:8px;font-style:italic">'+esc(q[0])+'</div>';
+              h += '<div class="bilingual-cn" style="color:#c9d1d9;font-size:13px;line-height:1.6">'+esc(q[1])+'</div>';
+              h += '</div>';
+            } else {
+              h += '<div class="extra-quote" style="margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #21262d">'+(eq.length>1?'<span style="color:#8b949e;font-size:11px;display:block;margin-bottom:4px">段落'+(i+1)+'</span> ':'')+esc(q)+'</div>';
+            }
+          });
+          h += '</div>';
+          h += '<div style="margin-top:8px"><a href="javascript:void(0)" data-idx="'+idx+'" class="fold-btn-ab" style="display:inline-block;background:#238636;color:#fff;padding:4px 12px;border-radius:6px;font-size:12px;text-decoration:none;font-weight:500">点击阅读全文 <span>▸</span></a></div>';
+        }
+      } else {
+        // Speech-style entry
+        h += '<span class="date">'+esc(d)+'</span>';
+        h += ' | <span class="person">'+pn+'</span>';
+        h += '\u5728<span class="occasion">'+esc(o)+'</span>';
+        h += '\u4e2d\u8868\u793a\uff1a<span class="quote">'+esc(e.content||'')+'</span>';
+        if(e.source_url){h += '<span class="meta"><a href="'+esc(e.source_url)+'" target="_blank" style="color:#84c1ff;text-decoration:none">['+esc(e.source||'')+']</a></span>';}else{h += '<span class="meta">['+esc(e.source||'')+']</span>';}
+        h += '</div>';
+
+        if(eq&&eq.length){
+          // Rule: 3 or fewer quotes = no fold (show directly)
+          if(eq.length <= 3){
+            h += '<div style="margin-top:6px;padding:10px 12px;background:#0d1117;border-radius:6px;border-left:2px solid #1f6feb">';
+          } else {
+            h += '<div id="eq'+idx+'" style="display:none;margin-top:6px;padding:10px 12px;background:#0d1117;border-radius:6px;border-left:2px solid #1f6feb;max-height:600px;overflow-y:auto">';
+          }
+          eq.forEach(function(q){
+            var isBilingual = (q.constructor === Array && q.length >= 2);
+            if(isBilingual){
+              h += '<div class="bilingual-block" style="margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #21262d">';
+              h += '<div class="bilingual-en" style="color:#e6edf3;font-size:13px;line-height:1.6;margin-bottom:8px;font-style:italic">'+esc(q[0])+'</div>';
+              h += '<div class="bilingual-cn" style="color:#c9d1d9;font-size:13px;line-height:1.6">'+esc(q[1])+'</div>';
+              h += '</div>';
+            } else {
+              h += '<div style="padding:4px 0;font-size:13px;color:#e6edf3;border-bottom:1px solid #21262d">• '+esc(q)+'</div>';
+            }
+          });
+          h += '</div>';
+          // Only show fold button when > 3 quotes
+          if(eq.length > 3){
+            h += '<div style="margin-top:8px"><a href="javascript:void(0)" data-idx="'+idx+'" class="fold-btn" style="display:inline-block;background:'+(eq[0].constructor===Array?'#238636':'#1f6feb')+';color:#fff;padding:4px 12px;border-radius:6px;font-size:12px;text-decoration:none;font-weight:500">'+(eq[0].constructor===Array?'点击阅读全文':'展开全部 '+tq+'条言论')+' <span>▸</span></a></div>';
+          }
+        }
+
+        if(bg){h += '<div class="bg">\uD83D\uDCCE '+bg+'</div>';
+        }
+      }
+
+      h += '</div>';
+      return h;
+    }).join('');
+  }
+
+  function renderAll(data){
+    var d = document.getElementById('fetchTime');
+    if(d) d.textContent = data.fetched_at||'--';
+    var le = document.getElementById('lastEdited');
+    if(le) le.textContent = '最后编辑：'+(data.last_edited||'--');
+
+    var pp = data.people||{};
+    var names = [];
+    for(var k in pp){if(pp.hasOwnProperty(k)) names.push(k);}
+
+    // tabs
+    var tabs = document.getElementById('peopleTabs');
+    var html = '';
+    for(var i=0;i<names.length;i++){
+      var n=names[i];
+      var arr=pp[n]||[];
+      var en=EN[n]||'';
+      var dn=n+(en?' ('+en+')':'');
+      html += '<div class="people-tab'+(i===0?' active':'')+'" data-person="'+n+'">'+esc(dn)+' <span class="count">'+arr.length+'\u6761</span></div>';
+    }
+    tabs.innerHTML = html;
+
+    // click handlers
+    var tbs = tabs.querySelectorAll('.people-tab');
+    for(var i=0;i<tbs.length;i++){
+      (function(tab){
+        tab.onclick = function(){
+          for(var j=0;j<tbs.length;j++) tbs[j].classList.remove('active');
+          this.classList.add('active');
+          render(pp[this.getAttribute('data-person')]||[], this.getAttribute('data-person'));
+        };
+      })(tbs[i]);
+    }
+
+    // render first
+    if(names.length>0) render(pp[names[0]]||[], names[0]);
+    else document.getElementById('list').innerHTML = '<div class="empty-state">\u6682\u65e0\u6570\u636e</div>';
+  }
+
+  // load data
+  var ls = document.getElementById('loadingState');
+  fetch('people_statements.json').then(function(r){return r.json();}).then(function(d){
+    if(ls) ls.style.display='none';
+    renderAll(d);
+  }).catch(function(){
+    if(ls) ls.style.display='none';
+    document.getElementById('entryList').innerHTML = '<div class="empty-state">\u6570\u636e\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u5237\u65b0\u91cd\u8bd5</div>';
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(e){
+  var el = e.target;
+  while(el && !el.classList.contains('fold-btn') && !el.classList.contains('fold-btn-ab')){ el = el.parentNode; }
+  if(!el) return;
+  var idx = el.getAttribute('data-idx');
+  if(!idx) return;
+  var prefix = el.classList.contains('fold-btn-ab') ? 'ab' : 'eq';
+  var b = document.getElementById(prefix + idx);
+  if(!b) return;
+  var isHidden = b.style.display === 'none' || b.style.display === '';
+  b.style.display = isHidden ? 'block' : 'none';
+  var span = el.querySelector('span');
+  if(span) span.textContent = isHidden ? '\u25be' : '\u25b8';
+});
+</script>
+</body>
+</html>
